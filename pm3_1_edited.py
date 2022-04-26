@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-import platform
 
 # TODO: нужен общий класс с которого идет импорт внешних функций
 from tools import *
@@ -7,6 +6,21 @@ inp = input
 ClassInput.input = inp
 # вар 2 input
 # inp = input
+
+#Для линкус
+# from engineers_src.tools.tools import *
+# как-то импортнуть внешний модуль по пути
+# это sys.path.insert(0, r'Path.home().join()')
+# os.chdir(path) os.getcwd(path) - изменить текущую зап директорию
+# Path('/sds')
+# Path.cwd()
+# Path.home().joinpath()
+
+# по испытаниями
+# Ex.get('ДИ_КПА') - ексепшн закоментить пересмотреть
+
+# проверить input
+
 
 
 
@@ -18,10 +32,10 @@ def KIS_mode_session(n):
     nbarl = barls[n]
 
     print()
-    print(Text.title('ВКЛ КИС В СР: БАРЛ %s' % n, tab=2))
+    print(Text.subtitle('ВКЛ КИС В СР: БАРЛ %s' % n))
     started_KIS_session = datetime.now()
 
-    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)', tab=0))
+    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
     print(Text.processing('Отправка: КПА-Мощность-Вверх'))
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
@@ -72,9 +86,9 @@ def KIS_mode_standby(n):
     nbarl = barls[n]
 
     print()
-    print(Text.title('ПЕРЕВОДА КИС В ДР: БАРЛ %s' % n, tab=2))
+    print(Text.title('ПЕРЕВОДА КИС В ДР: БАРЛ %s' % n, tab=1))
 
-    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)', tab=0))
+    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
     print(Text.processing('Отправка: КПА-Мощность-Вверх'))
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
@@ -114,9 +128,9 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
     # continue_session = started + timedelta(minutes=14)
     continue_session = started_KIS_session + timedelta(seconds=14)
     print()
-    print(Text.title('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s' % n, color='yellow', tab=2))
+    print(Text.title('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s' % n, tab=1))
 
-    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)', tab=0))
+    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
     print(Text.processing('Отправка: КПА-Мощность-Вверх'))
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
@@ -161,7 +175,7 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
 #######################################################
 
 
-print('\n' + Text.title('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА НА ЭМС ЧАСТЬ 1 НАСТРОЙКА РЭС', color='yellow', tab=4) + '\n')
+print('\n' + Text.title('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА НА ЭМС ЧАСТЬ 1 НАСТРОЙКА РЭС', color='yellow', tab=3) + '\n')
 
 print(Text.subtitle('НАСТРОЙКА РЛ КИС И ЗАМЕР ИСХОДНОЙ ЧУВСТВИТЕЛЬНОСТИ ПРМ1'))
 
