@@ -1,0 +1,5 @@
+ЭМС/
+*.doc*
+*.xlsx
+.idea/
+__pycache__/
