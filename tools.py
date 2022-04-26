@@ -81,7 +81,7 @@ class Text:
     @classmethod
     def text(cls, text, color=None, tab=None, resign=True):
         '''получить текст, resign - определяет переопределять параметры форматирования'''
-        stab, color = cls._get_params(tab=tab, color=color)
+        tab, color = cls._get_params(tab=tab, color=color)
         if resign:
             cls._override_options(tab=tab, color=color)
         return color + '\t' * tab + text + cls.default_color
