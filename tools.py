@@ -57,53 +57,65 @@ class Text:
     default_color = colors['default_color']
     cur_color = default_color
     cur_tab = 0
+    cur_sep = ''
+
+    # TODO: сделать функции с изменяемыми параматерами и по умолчанию - цвета, слэши в титле
+    # TODO: сделать функцию которая печататет столько же отступов и цвета как в предыдущем если не переданы другие параметры
+    # TODO: функция общая которая исп для перезаписи последних параметро
+    # TODO: мб сделать чтобы возвращала string, а не сама печатала
 
     @classmethod
     def help(cls):
         print('Цвета в Colors: %s' % cls.colors)
 
     @classmethod
-    def _get_params(cls, tab, color):
+    def _get_params(cls, separator, tab, color):
         '''Получить параметры форматирования'''
+        separator = cls.cur_sep if separator is None else separator
         tab = cls.cur_tab if tab is None else tab
         color_get = cls.cur_color if color is None else cls.colors.get(color)
         if color_get is None:
             print(cls.colors['blue_lined'] + 'Err: Нет цевета %s, используется default_color' % color)
-            return tab, cls.default_color
-        return tab, color_get
+            return separator, tab, cls.default_color
+        return separator, tab, color_get
 
     @classmethod
-    def _override_options(cls, tab, color):
+    def _override_options(cls, separator, tab, color):
         '''Переопределить параметры форматирования'''
+        # cls.cur_sep = separator
         cls.cur_tab = tab
         # cls.cur_color = color
 
     @classmethod
-    def text(cls, text, color=None, tab=None, resign=True):
+    def text(cls, text, color=None, tab=None, separator=None, resign=True):
         '''получить текст, resign - определяет переопределять параметры форматирования'''
-        tab, color = cls._get_params(tab=tab, color=color)
+        separator, tab, color = cls._get_params(separator=separator,  tab=tab, color=color)
         if resign:
-            cls._override_options(tab=tab, color=color)
-        return color + '\t' * tab + text + cls.default_color
+            cls._override_options(separator=separator, tab=tab, color=color)
+        separator = separator[:-1] if len(separator) > 0 and separator[-1] == '\n' else separator
+        if len(separator) > 0:
+            return color + separator + '\n' + '\t' * tab + text + '\n' + separator + cls.default_color
+        else:
+            return color + '\t' * tab + text + cls.default_color
 
     # может вызывать text но который ниче не переопределяет
     @classmethod
-    def title(cls, text, color='yellow', tab=None, ):
+    def title(cls, text, color='yellow', tab=None, separator=None):
         '''желтый заголовок с переносами строки'''
         if tab is None:
             tab = cls.cur_tab + 1
-        return cls.text(text, color=color, tab=tab, resign=True)
+        return cls.text(text, color=color, tab=tab, separator=separator, resign=True)
 
     @classmethod
-    def subtitle(cls, text, color='yellow', tab=None):
+    def subtitle(cls, text, color='yellow', tab=None, separator=None):
         '''желтый заголовок'''
         if tab is None:
             tab = cls.cur_tab - 1
-        return cls.text(text, color=color, tab=tab, resign=True)
+        return cls.text(text, color=color, tab=tab, separator=separator, resign=True)
 
     @classmethod
-    def comment(cls, text, color='yellow', tab=None, ):
-        return 'Комметарий: ' + cls.text(text, color=color, tab=tab, resign=False)
+    def comment(cls, text, color='yellow', tab=None, separator=None):
+        return 'Комметарий: ' + cls.text(text, color='yellow', tab=tab, separator='', resign=False)
 
     @classmethod
     def processing(cls, text):
