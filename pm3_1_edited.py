@@ -1,7 +1,11 @@
 from datetime import datetime, timedelta
+import platform
 
 # TODO: нужен общий класс с которого идет импорт внешних функций
-from tools import *
+if 'windows' in platform.system().lower():
+    from tools import *
+else:
+    from engineers_src.tools.tools import *
 inp = input
 ClassInput.input = inp
 # вар 2 input

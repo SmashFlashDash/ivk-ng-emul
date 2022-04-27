@@ -1,5 +1,5 @@
-ЭМС/
+/ЭМС/
 *.doc*
 *.xlsx
-.idea/
-__pycache__/
+/.idea/
+/__pycache__/
