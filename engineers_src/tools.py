@@ -1,13 +1,14 @@
+'''Файл с общим импортом функций'''
 import platform
-import json
-import re
-from time import sleep
 
-# TODO:
-'''Импорт ivk api'''
+# Импорт ivk интерфейса
 if 'windows' in platform.system().lower():
-    from TMI import *
+    from pathlib import Path
+    import sys
+    sys.path.insert(0, Path.cwd().parent.__str__())
+    from simulation_TMI import *  # импорт симуляции команд ИВК и TMI
 else:
+    # TODO: импорт sleep  прочих фукций
     import sys, os, inspect
     sys.path.insert(0, os.getcwd() + "/lib")
     from cpi_framework.utils.basecpi_abc import *
@@ -31,10 +32,8 @@ else:
     Ex = config.get_exchange()
 
 
-# TODO: add text color class with print in ivk tests
-#  как разбить подсветку сообщений
-#  класс Input или __BREAK__ с __BREAK__ непонятно
 class Text:
+    '''класс с методами покраски текста'''
     print = print
     if 'windows' in platform.system().lower():
         colors = {
@@ -80,13 +79,12 @@ class Text:
 
     @classmethod
     def text(cls, text, color=None, tab=None, resign=True):
-        '''получить текст, resign - определяет переопределять параметры форматирования'''
+        '''получить текст, resign - переопределять параметры форматирования'''
         tab, color = cls._get_params(tab=tab, color=color)
         if resign:
             cls._override_options(tab=tab, color=color)
         return color + '\t' * tab + text + cls.default_color
 
-    # может вызывать text но который ниче не переопределяет
     @classmethod
     def title(cls, text, color='yellow', tab=None, ):
         '''желтый заголовок с переносами строки'''
@@ -102,8 +100,9 @@ class Text:
         return cls.text(text, color=color, tab=tab, resign=True)
 
     @classmethod
-    def comment(cls, text, color='yellow', tab=None, ):
-        return 'Комметарий: ' + cls.text(text, color=color, tab=tab, resign=False)
+    def comment(cls, text, color='yellow'):
+        tab, color = cls._get_params(tab=None, color=color)
+        return 'Комметарий: ' + color + text + cls.default_color
 
     @classmethod
     def processing(cls, text):
@@ -124,8 +123,6 @@ class Text:
     @classmethod
     def default(cls, text):
         return cls.default_color + text + cls.default_color
-
-
 
 
 # TODO: импорт input
@@ -210,7 +207,8 @@ def control_SS(val, ref, text=None):
         # except TypeError as ex:  # если val None
         #     bool_eval = False
 
-        #  TODO: калибр некалибр определяется по типу val: str int float, заменяется \bx\b
+        # TODO: калибр некалибр определяется по типу val: str int float, заменяется \bx\b
+        #  при двух x в тексте должен вылетать с ошибкой
         regex = re.search(r'\bx\b', ref)
         try:
             if regex:
@@ -237,5 +235,8 @@ def control_SS(val, ref, text=None):
             print(Text.red('НЕНОРМА: ДИ=%s' % val))
         else:
             print(Text.red('НЕНОРМА: ДИ=%s; %s' % (val, text[1])))
-        input_break()  # Break как message или на input
+        input_break()
     return bool_eval
+
+
+del platform  # выгрузить модуль

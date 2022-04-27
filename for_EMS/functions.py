@@ -1,31 +1,18 @@
-from datetime import datetime, timedelta
 import platform
+import sys
 
-# TODO: нужен общий класс с которого идет импорт внешних функций
+# Импорт интерфейса ИВК
+from pathlib import Path
+
 if 'windows' in platform.system().lower():
+    sys.path.insert(0, Path.cwd().joinpath('engineers_src/').absolute().__str__())
     from tools import *
+    del Path
+    del platform
 else:
-    from engineers_src.tools.tools import *
-inp = input
-ClassInput.input = inp
-# вар 2 input
-# inp = input
-
-#Для линкус
-# from engineers_src.tools.tools import *
-# как-то импортнуть внешний модуль по пути
-# это sys.path.insert(0, r'Path.home().join()')
-# os.chdir(path) os.getcwd(path) - изменить текущую зап директорию
-# Path('/sds')
-# Path.cwd()
-# Path.home().joinpath()
-
-# по испытаниями
-# Ex.get('ДИ_КПА') - ексепшн закоментить пересмотреть
-
-# проверить input
-
-
+    from engineers_src.tools import *  # путь к tools в папке ivk
+    # sys.path.insert(0, '/home/')  # либо каждый tools к себе в паку с тестом Linux и пишут путь (home/admin/ivk-ng/engeniiers_src/tools)
+from datetime import datetime, timedelta
 
 
 def KIS_mode_session(n):
@@ -130,7 +117,7 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
 
     power = 0
     # continue_session = started + timedelta(minutes=14)
-    continue_session = started_KIS_session + timedelta(seconds=14)
+    continue_session = started + timedelta(seconds=14)
     print()
     print(Text.title('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s' % n, tab=1))
 
@@ -165,50 +152,3 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
     print(Text.comment('Чувствительность применика БАРЛ %s -  %s db' % (n, power)))
     print(Text.subtitle('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s ЗАВЕРШЕН' % n))
     input_break()
-
-
-
-
-
-
-
-
-
-#######################################################
-#############     MAIN      ###########################
-#######################################################
-
-
-print('\n' + Text.title('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА НА ЭМС ЧАСТЬ 1 НАСТРОЙКА РЭС', color='yellow', tab=3) + '\n')
-
-print(Text.subtitle('НАСТРОЙКА РЛ КИС И ЗАМЕР ИСХОДНОЙ ЧУВСТВИТЕЛЬНОСТИ ПРМ1'))
-
-started_KIS_session = KIS_mode_session(1)  # БАРЛ в сеансный режим
-TMIdevs['15.00.NRK' + '1\\2']['НЕКАЛИБР ТЕКУЩ'] = [14, 14]  # симуляция ТМИ
-
-KIS_measure_sensitivity(1, n_SOTC=5, started=started_KIS_session, add_sensitive=0)  # замер чувствт КИС
-TMIdevs['ДИ_КПА']['НЕКАЛИБР ТЕКУЩ'] = [0, 0]  # симуляция ТМИ
-
-KIS_mode_standby(1)  # БАРЛ в дужерный режим
-
-
-
-
-
-
-
-
-
-
-
-# сделать фнкции по подсветке текста
-# проверке ТМИ
-# продумать break как вызвается пауза в скрипте - запустить на ИВК, настроить VM, PyCharm туда
-# найти что делает breakpoint в tab_Widget и это мб та же функция что __BREAK__
-# в console_widget input_ended_signal - сигнал на остановку
-# смотреть в PyDevDRunner
-# посмотреть как делается input так же сдеать thread на !pause
-# input продолжить или выход
-
-# s = Path(os.getcwd()).parent.joinpath('ivk_dump', 'TMI_DUMP %s.bin' % datetime.datetime.now().strftime('%Y.%m.%d %H:%M:%S'))
-# print(s)
