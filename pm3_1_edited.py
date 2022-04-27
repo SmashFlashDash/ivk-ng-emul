@@ -2,11 +2,29 @@ from datetime import datetime, timedelta
 import platform
 
 # TODO: нужен общий класс с которого идет импорт внешних функций
-from tools import *
+if 'windows' in platform.system().lower():
+    from tools import *
+else:
+    from engineers_src.tools.tools import *
 inp = input
 ClassInput.input = inp
 # вар 2 input
 # inp = input
+
+#Для линкус
+# from engineers_src.tools.tools import *
+# как-то импортнуть внешний модуль по пути
+# это sys.path.insert(0, r'Path.home().join()')
+# os.chdir(path) os.getcwd(path) - изменить текущую зап директорию
+# Path('/sds')
+# Path.cwd()
+# Path.home().joinpath()
+
+# по испытаниями
+# Ex.get('ДИ_КПА') - ексепшн закоментить пересмотреть
+
+# проверить input
+
 
 
 
@@ -19,15 +37,15 @@ def KIS_mode_session(n):
 
     print()
     print(Text.subtitle('ВКЛ КИС В СР: БАРЛ %s' % n))
+    started_KIS_session = datetime.now()
 
-    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)', tab=0))
+    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
     print(Text.processing('Отправка: КПА-Мощность-Вверх'))
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
 
     # sleep 15
     print(Text.subtitle('ВКЛ БАРЛ ПРОВЕРКА ПРИЕМА'))
-    started = datetime.now()
     send_SOTC(n, 1, 'Включить БАРЛ 1')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
     control_SS(val=Ex.get('КПА', 'ДИ_КПА', 'прием_КА'),
                ref='x==1',
@@ -60,9 +78,9 @@ def KIS_mode_session(n):
                ref='90 < x < 210',
                text='УРОВЕНЬ ПРИНИМАЕМОГО СИГНАЛА')
 
-    print(Text.comment('ФУНКЦИЯ ВКЛ КИС В СР С БАРЛ %s ЗАВЕРШЕНА' % n))
+    print(Text.subtitle('ВКЛ КИС В СР С БАРЛ %s ЗАВЕРШЕН' % n))
     input_break()
-    return started
+    return started_KIS_session
 
 
 def KIS_mode_standby(n):
@@ -72,20 +90,22 @@ def KIS_mode_standby(n):
     nbarl = barls[n]
 
     print()
-    print(Text.subtitle('ПЕРЕВОДА КИС В ДР: БАРЛ %s' % n, color='yellow', subLevel=1))
+    print(Text.title('ПЕРЕВОДА КИС В ДР: БАРЛ %s' % n, tab=1))
 
-    Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)')
+    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
+    print(Text.processing('Отправка: КПА-Мощность-Вверх'))
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
 
     # sleep 15
-    Text.subtitle('ПЕРЕВОД КИС В ДР')
+    print(Text.subtitle('ПЕРЕВОД КИС В ДР'))
     send_SOTC(5, wait=5, describe='Выключить БАРЛ')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
     control_SS(val=Ex.get('КПА', 'ДИ_КПА', 'прием_КА'),
                ref='x != 1',
                text=['НЕТ ПРИЁМА С МКА', 'ЕСТЬ ПРИЕМ С МКА'])
 
-    Text.comment('ПЕРЕВОДА КИС В ДР ВЫПОЛНЕНА')
+    print(Text.subtitle('ПЕРЕВОД КИС В ДР ВЫПОЛНЕН'))
+    input_break()
     sleep(1)
 
 
@@ -110,16 +130,19 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
 
     power = 0
     # continue_session = started + timedelta(minutes=14)
-    continue_session = started + timedelta(seconds=14)
+    continue_session = started_KIS_session + timedelta(seconds=14)
     print()
-    Text.subtitle('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s' % n, color='yellow', subLevel=1)
+    print(Text.title('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s' % n, tab=1))
 
-    Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)')
+    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
+    print(Text.processing('Отправка: КПА-Мощность-Вверх'))
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
 
     exchange_errors = []
     while exchange_errors.count(False) < 1:
+        # TODO: не меняет КПА мощность не считает мощность
+
         # TODO: выдать повторно если не прошла комманда
         #  рассчитывать от количества выдаваемых комманд и пауз
         if continue_session < datetime.now():
@@ -138,27 +161,45 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
                               ref='x == 38')
             exchange_errors.extend([rk14, rk38])
 
-    Text.comment('Ошибки в обмене %s / %s ' % (exchange_errors.count(False), 2 * n_SOTC))
-    Text.comment('Чувствительность применика БАРЛ %s -  %s db' % (n, power))
+    print(Text.comment('Ошибки в обмене %s / %s ' % (exchange_errors.count(False), 2 * n_SOTC)))
+    print(Text.comment('Чувствительность применика БАРЛ %s -  %s db' % (n, power)))
+    print(Text.subtitle('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s ЗАВЕРШЕН' % n))
+    input_break()
 
 
-# сделать класс для обмена данных например datetie
-# и юзать там getaatr и setattr
+
+
+
+
+
 
 
 #######################################################
 #############     MAIN      ###########################
 #######################################################
 
-print(Text.title('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА НА ЭМС ЧАСТЬ 1 НАСТРОЙКА РЭС', color='yellow', tab=4, separator=' '))
+
+print('\n' + Text.title('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА НА ЭМС ЧАСТЬ 1 НАСТРОЙКА РЭС', color='yellow', tab=3) + '\n')
 
 print(Text.subtitle('НАСТРОЙКА РЛ КИС И ЗАМЕР ИСХОДНОЙ ЧУВСТВИТЕЛЬНОСТИ ПРМ1'))
 
-started = KIS_mode_session(1)  # БАРЛ в сеансный режим
-TMIdevs['15.00.NRK' + '1\\2']['НЕКАЛИБР ТЕКУЩ'] = [14, 14]  # симуляция прекращения приема
-KIS_measure_sensitivity(1, 5, started=started, add_sensitive=0)  # замер чувствт КИС
-TMIdevs['ДИ_КПА']['НЕКАЛИБР ТЕКУЩ'] = [0, 0]  # симуляция прекращения приема
-KIS_mode_standby(1)  # БАРЛ в сеансный режим
+started_KIS_session = KIS_mode_session(1)  # БАРЛ в сеансный режим
+TMIdevs['15.00.NRK' + '1\\2']['НЕКАЛИБР ТЕКУЩ'] = [14, 14]  # симуляция ТМИ
+
+KIS_measure_sensitivity(1, n_SOTC=5, started=started_KIS_session, add_sensitive=0)  # замер чувствт КИС
+TMIdevs['ДИ_КПА']['НЕКАЛИБР ТЕКУЩ'] = [0, 0]  # симуляция ТМИ
+
+KIS_mode_standby(1)  # БАРЛ в дужерный режим
+
+
+
+
+
+
+
+
+
+
 
 # сделать фнкции по подсветке текста
 # проверке ТМИ
