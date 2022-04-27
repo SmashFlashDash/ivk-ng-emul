@@ -1,36 +1,9 @@
 '''Файл с общим импортом функций'''
-import platform
+import re
+from time import sleep
+from engineers_src.tools.ivk_imports import *
 
-# Импорт ivk интерфейса
-if 'windows' in platform.system().lower():
-    from pathlib import Path
-    import sys
-    sys.path.insert(0, Path.cwd().parent.__str__())
-    from simulation_TMI import *  # импорт симуляции команд ИВК и TMI
-else:
-    # TODO: импорт sleep  прочих фукций
-    import sys, os, inspect
-    sys.path.insert(0, os.getcwd() + "/lib")
-    from cpi_framework.utils.basecpi_abc import *
-    from ivk import config
-    from ivk.log_db import DbLog
-    from cpi_framework.spacecrafts.omka.cpi import CPIBASE
-    from cpi_framework.spacecrafts.omka.cpi import CPICMD
-    from cpi_framework.spacecrafts.omka.cpi import CPIKC
-    from cpi_framework.spacecrafts.omka.cpi import CPIMD
-    from cpi_framework.spacecrafts.omka.cpi import CPIPZ
-    from cpi_framework.spacecrafts.omka.cpi import CPIRIK
-    from cpi_framework.spacecrafts.omka.cpi import OBTS
-    from ivk.scOMKA.simplifications import SCPICMD
-    from cpi_framework.spacecrafts.omka.otc import OTC
-    from ivk.scOMKA.simplifications import SOTC
-    from ivk.scOMKA.controll_kpa import KPA
-    from ivk.scOMKA.simplifications import SKPA
-    from ivk.scOMKA.controll_iccell import ICCELL
-    from ivk.scOMKA.simplifications import SICCELL
-    from ivk.scOMKA.controll_scpi import SCPI
-    Ex = config.get_exchange()
-
+global input
 
 class Text:
     '''класс с методами покраски текста'''
@@ -128,18 +101,17 @@ class Text:
 # TODO: импорт input
 #  прописать input y/n функцию
 # можно поробобовать через
-class ClassInput:
-    '''Переопределить input'''
-    input = None
+# class ClassInput:
+#     '''Переопределить input'''
+#     input = input
 
 
 # вар 2 input
 # global inp
 
-
 def input_break():
     '''пауза через input'''
-    if ClassInput.input is None:
+    if input is None:
         raise Exception('Необходимо передать в ClassInput input функцию: ClassInput.input = input')
     while True:
         answer = input('Нажать [y]/[n]: ')
@@ -237,6 +209,3 @@ def control_SS(val, ref, text=None):
             print(Text.red('НЕНОРМА: ДИ=%s; %s' % (val, text[1])))
         input_break()
     return bool_eval
-
-
-del platform  # выгрузить модуль

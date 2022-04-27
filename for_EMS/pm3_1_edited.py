@@ -3,12 +3,17 @@ import platform
 
 # Импорт всех функций
 if 'windows' in platform.system().lower():
-    from engineers_src.tools import *
-    from functions import *
+    from simulation_TMI import RokotTmi, Ex, KPA, SOTC, AsciiHex, SCPICMD, TMIdevs
+    from engineers_src.tools.ivk_imports import *
+    from engineers_src.tools.tools import Text, input_break, send_SOTC, control_SS  # Импорт общих функций
+    from engineers_src.for_EMS.functions import KIS_mode_session, KIS_measure_sensitivity, KIS_mode_standby       # Импорт функций теста
 else:
-    from engineers_src.tools.tools import *
-inp = input
-ClassInput.input = inp
+    from engineers_src.tools.ivk_imports import *
+    from engineers_src.tools.tools import Text, input_break, send_SOTC, control_SS  # Импорт общих функций
+    from engineers_src.for_EMS.functions import KIS_mode_session, KIS_measure_sensitivity, KIS_mode_standby  # Импорт функций теста
+global input
+inp = input  # точка остановки для input
+#ClassInput.input = inp
 # вар 2 input можно в других файлов юзать global input
 # inp = input
 
@@ -26,8 +31,6 @@ ClassInput.input = inp
 # Ex.get('ДИ_КПА') - ексепшн закоментить пересмотреть
 
 
-
-
 #######################################################
 #############     MAIN      ###########################
 #######################################################
@@ -36,10 +39,10 @@ print('\n' + Text.title('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА Н
 print(Text.subtitle('НАСТРОЙКА РЛ КИС И ЗАМЕР ИСХОДНОЙ ЧУВСТВИТЕЛЬНОСТИ ПРМ1'))
 
 started_KIS_session = KIS_mode_session(1)  # БАРЛ в сеансный режим
-TMIdevs['15.00.NRK' + '1\\2']['НЕКАЛИБР ТЕКУЩ'] = [14, 14]  # симуляция ТМИ
+#TMIdevs['15.00.NRK' + '1\\2']['НЕКАЛИБР ТЕКУЩ'] = [14, 14]  # симуляция ТМИ
 
 KIS_measure_sensitivity(1, n_SOTC=5, started=started_KIS_session, add_sensitive=0)  # замер чувствт КИС
-TMIdevs['ДИ_КПА']['НЕКАЛИБР ТЕКУЩ'] = [0, 0]  # симуляция ТМИ
+#TMIdevs['ДИ_КПА']['НЕКАЛИБР ТЕКУЩ'] = [0, 0]  # симуляция ТМИ
 
 KIS_mode_standby(1)  # БАРЛ в дужерный режим
 

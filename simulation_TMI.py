@@ -1,10 +1,7 @@
 from time import sleep
-import re
+# import re, json os, subprocess  # , redis
 import sys
-import os, subprocess  # , redis
-import json
 from random import randint
-import platform
 
 # os.system('F:\ProjIVKNG\IVKNG\Redis-x64-3.0.504\\redis-server.exe')
 # FNULL = open(os.devnull, 'w')
@@ -43,7 +40,6 @@ class TMIrlci:
 
 
 class Execute:
-
     # Имитирование метода Ex.get
     def get(self, type, di_cyph, kalib):
         try:
