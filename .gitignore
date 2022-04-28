@@ -1,5 +1,3 @@
-/ЭМС/
-*.doc*
-*.xlsx
+/_ignone_docs
 /.idea/
 /__pycache__/

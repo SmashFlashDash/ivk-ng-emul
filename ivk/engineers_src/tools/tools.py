@@ -2,34 +2,8 @@
 import platform
 
 # Импорт ivk интерфейса
-if 'windows' in platform.system().lower():
-    from pathlib import Path
-    import sys
-    sys.path.insert(0, Path.cwd().parent.__str__())
-    from simulation_TMI import *  # импорт симуляции команд ИВК и TMI
-else:
-    # TODO: импорт sleep  прочих фукций
-    import sys, os, inspect
-    sys.path.insert(0, os.getcwd() + "/lib")
-    from cpi_framework.utils.basecpi_abc import *
-    from ivk import config
-    from ivk.log_db import DbLog
-    from cpi_framework.spacecrafts.omka.cpi import CPIBASE
-    from cpi_framework.spacecrafts.omka.cpi import CPICMD
-    from cpi_framework.spacecrafts.omka.cpi import CPIKC
-    from cpi_framework.spacecrafts.omka.cpi import CPIMD
-    from cpi_framework.spacecrafts.omka.cpi import CPIPZ
-    from cpi_framework.spacecrafts.omka.cpi import CPIRIK
-    from cpi_framework.spacecrafts.omka.cpi import OBTS
-    from ivk.scOMKA.simplifications import SCPICMD
-    from cpi_framework.spacecrafts.omka.otc import OTC
-    from ivk.scOMKA.simplifications import SOTC
-    from ivk.scOMKA.controll_kpa import KPA
-    from ivk.scOMKA.simplifications import SKPA
-    from ivk.scOMKA.controll_iccell import ICCELL
-    from ivk.scOMKA.simplifications import SICCELL
-    from ivk.scOMKA.controll_scpi import SCPI
-    Ex = config.get_exchange()
+from ivk.engineers_src.tools.ivk_imports import *
+import re
 
 
 class Text:
@@ -62,7 +36,7 @@ class Text:
         print('Цвета в Colors: %s' % cls.colors)
 
     @classmethod
-    def _get_params(cls, tab, color):
+    def _get_format(cls, tab, color):
         '''Получить параметры форматирования'''
         tab = cls.cur_tab if tab is None else tab
         color_get = cls.cur_color if color is None else cls.colors.get(color)
@@ -80,7 +54,7 @@ class Text:
     @classmethod
     def text(cls, text, color=None, tab=None, resign=True):
         '''получить текст, resign - переопределять параметры форматирования'''
-        tab, color = cls._get_params(tab=tab, color=color)
+        tab, color = cls._get_format(tab=tab, color=color)
         if resign:
             cls._override_options(tab=tab, color=color)
         return color + '\t' * tab + text + cls.default_color
@@ -101,7 +75,7 @@ class Text:
 
     @classmethod
     def comment(cls, text, color='yellow'):
-        tab, color = cls._get_params(tab=None, color=color)
+        tab, color = cls._get_format(tab=None, color=color)
         return 'Комметарий: ' + color + text + cls.default_color
 
     @classmethod
@@ -125,32 +99,32 @@ class Text:
         return cls.default_color + text + cls.default_color
 
 
-# TODO: импорт input
-#  прописать input y/n функцию
-# можно поробобовать через
+# TODO: прописать input y/n функцию
 class ClassInput:
-    '''Переопределить input'''
     input = None
+    print('ClassInput импорт')
 
+    @classmethod
+    def set(cls, foo):
+        cls.input = foo
+        print('set ClassInput.input: %s' % cls.input)
 
-# вар 2 input
-# global inp
-
-
-def input_break():
-    '''пауза через input'''
-    if ClassInput.input is None:
-        raise Exception('Необходимо передать в ClassInput input функцию: ClassInput.input = input')
-    while True:
-        answer = input('Нажать [y]/[n]: ')
-        if answer == 'y':
-            print(Text.blue('Нажать [y]/[n]: Продолжить'))
-            return
-        elif answer == 'n':
-            print(Text.blue('Нажать [y]/[n]: Завершить'))
-            sys.exit()
-        else:
-            print('НЕВЕРНЫЙ ВВОД:::')
+    @classmethod
+    def input_break(cls):
+        '''пауза через input'''
+        print('Вызов input_break: %s' % cls.input)
+        if ClassInput.input is None:
+            raise Exception('Необходимо передать в ClassInput input функцию: ClassInput.input = input')
+        while True:
+            answer = input('Нажать [y]/[n]: ')
+            if answer == 'y':
+                print(Text.blue('Нажать [y]/[n]: Продолжить'))
+                return
+            elif answer == 'n':
+                print(Text.blue('Нажать [y]/[n]: Завершить'))
+                sys.exit()
+            else:
+                print('НЕВЕРНЫЙ ВВОД:::')
 
 
 def send_SOTC(n, wait=0, describe=""):
@@ -235,8 +209,9 @@ def control_SS(val, ref, text=None):
             print(Text.red('НЕНОРМА: ДИ=%s' % val))
         else:
             print(Text.red('НЕНОРМА: ДИ=%s; %s' % (val, text[1])))
-        input_break()
+        ClassInput.input_break()
     return bool_eval
 
 
 del platform  # выгрузить модуль
+print('Импорт tools.tools')

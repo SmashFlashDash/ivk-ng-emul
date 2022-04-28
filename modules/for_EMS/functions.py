@@ -4,16 +4,15 @@ import sys
 # Импорт интерфейса ИВК
 from pathlib import Path
 
-if 'windows' in platform.system().lower():
-    sys.path.insert(0, Path.cwd().joinpath('engineers_src/').absolute().__str__())
-    from tools import *
-    del Path
-    del platform
-else:
-    from engineers_src.tools import *  # путь к tools в папке ivk
-    # sys.path.insert(0, '/home/')  # либо каждый tools к себе в паку с тестом Linux и пишут путь (home/admin/ivk-ng/engeniiers_src/tools)
+from ivk.engineers_src.tools.ivk_imports import *
+from ivk.engineers_src.tools.tools import *
 from datetime import datetime, timedelta
 
+
+# TODO: переделать в класс КИС
+#  с полям session{'started':, 'end'} - datetime писать
+#  сделать методы для _start_session, fin_sessin
+#  поле cur_barl переданый в mode ses
 
 def KIS_mode_session(n):
     '''перевода КИС из ДР в СР
@@ -66,7 +65,7 @@ def KIS_mode_session(n):
                text='УРОВЕНЬ ПРИНИМАЕМОГО СИГНАЛА')
 
     print(Text.subtitle('ВКЛ КИС В СР С БАРЛ %s ЗАВЕРШЕН' % n))
-    input_break()
+    ClassInput.input_break()
     return started_KIS_session
 
 
@@ -92,7 +91,7 @@ def KIS_mode_standby(n):
                text=['НЕТ ПРИЁМА С МКА', 'ЕСТЬ ПРИЕМ С МКА'])
 
     print(Text.subtitle('ПЕРЕВОД КИС В ДР ВЫПОЛНЕН'))
-    input_break()
+    ClassInput.input_break()
     sleep(1)
 
 
@@ -151,4 +150,7 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
     print(Text.comment('Ошибки в обмене %s / %s ' % (exchange_errors.count(False), 2 * n_SOTC)))
     print(Text.comment('Чувствительность применика БАРЛ %s -  %s db' % (n, power)))
     print(Text.subtitle('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s ЗАВЕРШЕН' % n))
-    input_break()
+    ClassInput.input_break()
+
+
+print('Импорт functions из modules')

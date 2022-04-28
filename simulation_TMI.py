@@ -6,11 +6,6 @@ import json
 from random import randint
 import platform
 
-# os.system('F:\ProjIVKNG\IVKNG\Redis-x64-3.0.504\\redis-server.exe')
-# FNULL = open(os.devnull, 'w')
-# args = 'F:\ProjIVKNG\IVKNG\Redis-x64-3.0.504\\redis-server.exe'
-# subprocess.call(args, stdout=FNULL, stderr=FNULL, shell=False)
-
 
 # Калиброванные значения ТМИ
 TMIdevs = {
@@ -86,15 +81,6 @@ def SOTC(*args):
 class KPA:
     def __init__(self, *args, **kwargs):
         pass
-
-
-def __BREAK__():
-    # можно сделать высплывающий QMessageBox
-    s = input('...Пауза программы, введите y/n')
-    if s == 'y':
-        pass
-    else:
-        sys.exit()
 
 
 RokotTmi = TMIrlci()

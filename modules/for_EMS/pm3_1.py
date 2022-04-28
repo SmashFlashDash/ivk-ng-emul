@@ -1,18 +1,36 @@
 '''Исполняемый файл тест 1'''
 import platform
+import sys
 
-# Импорт всех функций
+'''это main файл но os.getcwd другая'''
+
+# Импорт зависимостей
 if 'windows' in platform.system().lower():
-    from engineers_src.tools import *
-    from functions import *
+    from pathlib import Path
+    # sys.path.insert(0, str(Path.cwd().parent.parent.joinpath('ivk')))
+    from simulation_TMI import *  # симуляция ИВКы
+    from ivk.engineers_src.tools.tools import *  # импорт тулс
+    from functions import *  # импорт функций
 else:
-    from engineers_src.tools.tools import *
-inp = input
-ClassInput.input = inp
+    from engineers_src.tools.tools import *  # импорт тулс
+    from for_EMS.functions import *  # импорт из папки modeles прописа в cpi_framework_connections
+
+
+# импорт
+def inp(quest):
+    return input(quest)
+#     ans = input(quest)
+#     return ans
+ClassInput.set(inp)
+
+# TODO: прописать в cpi_framework_connections путь к modules
+#  поменять KIS на класс
+
+
 # вар 2 input можно в других файлов юзать global input
 # inp = input
 
-#Для линкус
+# Для линкус
 # from engineers_src.tools.tools import *
 # как-то импортнуть внешний модуль по пути
 # это sys.path.insert(0, r'Path.home().join()')
@@ -24,8 +42,6 @@ ClassInput.input = inp
 # по испытаниями
 # проверить input
 # Ex.get('ДИ_КПА') - ексепшн закоментить пересмотреть
-
-
 
 
 #######################################################
@@ -42,16 +58,6 @@ KIS_measure_sensitivity(1, n_SOTC=5, started=started_KIS_session, add_sensitive=
 TMIdevs['ДИ_КПА']['НЕКАЛИБР ТЕКУЩ'] = [0, 0]  # симуляция ТМИ
 
 KIS_mode_standby(1)  # БАРЛ в дужерный режим
-
-
-
-
-
-
-
-
-
-
 
 # сделать фнкции по подсветке текста
 # проверке ТМИ
