@@ -1,14 +1,13 @@
 import platform
-from time import sleep
-'''Импорт зависимостей ИВК'''
 
+'''Импорт зависимостей ИВК'''
 if 'windows' in platform.system().lower():
+    print('Импорт зависимостей ИВК')
     from pathlib import Path
     import sys
     sys.path.insert(0, Path.cwd().parent.parent.parent.__str__())
     from simulation_TMI import RokotTmi, Ex, KPA, SOTC, AsciiHex, SCPICMD, TMIdevs  # импорт симуляции команд ИВК и TMI
 else:
-    # TODO: импорт sleep  прочих фукций
     import sys, os, inspect
     sys.path.insert(0, os.getcwd() + "/lib")
     from cpi_framework.utils.basecpi_abc import *
@@ -30,5 +29,4 @@ else:
     from ivk.scOMKA.simplifications import SICCELL
     from ivk.scOMKA.controll_scpi import SCPI
     Ex = config.get_exchange()
-
-print('Импорт зависимостей ИВК')
+from time import sleep

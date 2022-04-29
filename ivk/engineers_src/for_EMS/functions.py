@@ -2,10 +2,14 @@ import platform
 import sys
 
 # Импорт интерфейса ИВК
-from pathlib import Path
-
-from ivk.engineers_src.tools.ivk_imports import *
-from ivk.engineers_src.tools.tools import *
+if 'windows' in platform.system().lower():
+    print('Импорт функций КИС')
+    from pathlib import Path
+    from ivk.engineers_src.tools.ivk_imports import *
+    from ivk.engineers_src.tools.tools import *
+else:
+    from engineers_src.tools.ivk_imports import *
+    from engineers_src.tools.tools import *
 from datetime import datetime, timedelta
 
 
@@ -151,6 +155,3 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
     print(Text.comment('Чувствительность применика БАРЛ %s -  %s db' % (n, power)))
     print(Text.subtitle('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s ЗАВЕРШЕН' % n))
     ClassInput.input_break()
-
-
-print('Импорт functions из modules')

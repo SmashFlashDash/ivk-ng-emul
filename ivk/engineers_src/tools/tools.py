@@ -3,8 +3,14 @@ import platform
 
 # Импорт ivk интерфейса
 from ivk.engineers_src.tools.ivk_imports import *
+if 'windows' in platform.system().lower():
+    print('Импорт общих тулз')
+    from ivk.engineers_src.tools.ivk_imports import *
+else:
+    from engineers_src.tools.ivk_imports import *
 import re
 
+# TODO: добавить тестов
 
 class Text:
     '''класс с методами покраски текста'''
@@ -18,15 +24,17 @@ class Text:
             'blue': '\x1b[38;5;87m',  # '\033[0;36m'
             'blue_lined': '\x1b[38;5;87m'  # '\033[4;36m
         }
+        tab = '\t'
     else:
         colors = {
-            'default_color': '{#dfffff}',
-            'red': '{#dc143c}',
-            'green': '{#32cd32}',
-            'yellow': '{#ffcd57}',
+            'default_color': '{#dfffff}',   # #FFFFFF
+            'red': '{#FF0000}',
+            'green': '{#008000}',  # #00FF00
+            'yellow': '{#FFFF00}',
             'blue': '{#00ffff}',
             'blue_lined': '{#00ffff}'
         }
+        tab = '   '
     default_color = colors['default_color']
     cur_color = default_color
     cur_tab = 0
@@ -49,7 +57,7 @@ class Text:
     def _override_options(cls, tab, color):
         '''Переопределить параметры форматирования'''
         cls.cur_tab = tab
-        # cls.cur_color = color
+        # cls.cur_color = color     №
 
     @classmethod
     def text(cls, text, color=None, tab=None, resign=True):
@@ -57,18 +65,18 @@ class Text:
         tab, color = cls._get_format(tab=tab, color=color)
         if resign:
             cls._override_options(tab=tab, color=color)
-        return color + '\t' * tab + text + cls.default_color
+        return color + cls.tab * tab + text + cls.default_color
 
     @classmethod
     def title(cls, text, color='yellow', tab=None, ):
-        '''желтый заголовок с переносами строки'''
+        '''желтый заголовок c автосмещение вправо если не задан параметр tab'''
         if tab is None:
             tab = cls.cur_tab + 1
         return cls.text(text, color=color, tab=tab, resign=True)
 
     @classmethod
     def subtitle(cls, text, color='yellow', tab=None):
-        '''желтый заголовок'''
+        '''желтый заголовок c автосмещение влево если не задан параметр tab'''
         if tab is None:
             tab = cls.cur_tab - 1
         return cls.text(text, color=color, tab=tab, resign=True)
@@ -99,59 +107,72 @@ class Text:
         return cls.default_color + text + cls.default_color
 
 
-# TODO: прописать input y/n функцию
 class ClassInput:
+    '''класс для исп input ivk'''
     input = None
-    print('ClassInput импорт')
 
     @classmethod
     def set(cls, foo):
         cls.input = foo
-        print('set ClassInput.input: %s' % cls.input)
 
     @classmethod
     def input_break(cls):
-        '''пауза через input'''
-        print('Вызов input_break: %s' % cls.input)
+        #print('Вызов input_break: %s' % cls.input)
         if ClassInput.input is None:
-            raise Exception('Необходимо передать в ClassInput input функцию: ClassInput.input = input')
+            raise Exception('ClassInput.input = None, в скрипте ivkng добавить:\n'
+                            ' # импорт\ndef inp(quest):'
+                            '\n\treturn input(quest)\n'
+                            'ClassInput.set(inp)')
         while True:
-            answer = input('Нажать [y]/[n]: ')
+            answer = ClassInput.input('Нажать [y]/[n]: ')
             if answer == 'y':
-                print(Text.blue('Нажать [y]/[n]: Продолжить'))
+                print(Text.blue(':::Продолжить'))
                 return
             elif answer == 'n':
-                print(Text.blue('Нажать [y]/[n]: Завершить'))
+                print(Text.blue(':::Завершить'))
                 sys.exit()
             else:
                 print('НЕВЕРНЫЙ ВВОД:::')
 
 
 def send_SOTC(n, wait=0, describe=""):
-    '''Отправка команды на КПА
-    @wait: int, float
-    @describe: string'''
+    '''
+    Отправка команды на КПА
+
+        Parameters:
+            n (int): номер отправляемо команды
+            wait (int): ожидание после выполенеия деф = 0
+            describe (str): описание что выполняет команда
+
+        Returns:
+            None
+    '''
     print(Text.processing('Отправка РК %s' % n if describe == "" else 'Отправка РК %s: %s' % (n, describe)))
     SOTC(n)
     sleep(wait)
 
-
+# TODO: добавить тестов
 def control_SS(val, ref, text=None):
-    '''Проверка параметра CC
-    @val полученное значение параметра СС
-    @ref с чем сравнивается
-    @text [str, str], str, None - список двух элементов string, вывод после првоерки условия true, false соответсвенно
-    Формат ввода control_SS: @ref
-    ref = 'x == \'Вкл\''
-    ref = 'not (x != 38)
-    ref = '90 < x <= 210'
-    ref='x == %d' % (n - 1)
-
-    если не нужен вывод в консоль при норме но нужен при норме не передавать text
-    если вывод без доп комменатрия ''
-    если одинаковый комментарий 'Комментарий'
-    если два разных комментарий ['Комментарий_1', 'Комментарий_2']
     '''
+    Проверка параметра запрашиваемого из БД
+
+        Parameters:
+            val (int, str): значение полученное из БД
+            ref (int, str): калибр (str), некалибр (int), выражение формата
+                x == "Вкл",
+                not (x != 38),
+                90 < x <= 210,
+                "x == %d" % (n - 1)
+            text (None, '', str, [str, str]):
+                None - не выводит доп комени
+                '' -
+                str - одинаковый коментарий для результата True, False
+                [str1, str2] - коментарии для True, False соответсвенно
+
+        Returns:
+            bool - результат выполнения выражения
+    '''
+
     # if text is None:
     #     text = ['', '']
 
@@ -191,16 +212,15 @@ def control_SS(val, ref, text=None):
                 expression = ref[:pos[0]] + val + ref[pos[1]:]
                 bool_eval = eval(expression)
             else:
-                # если ref 'Вкл'
                 bool_eval = val == ref
         except TypeError as ex:
-            # если val None
-            bool_eval = False
+            bool_eval = False   # если из БД вернулся None
     elif isinstance(ref, (int, float)):
         bool_eval = val == ref
     else:
-        raise ValueError('@ref can take: string logical expression;  or string, int, float to @val==@ref')
+        raise ValueError('Параметр ref имеет не тот тип данных в control_SS')
 
+    # Вывод результата
     if bool_eval:
         if text is not None:
             print(Text.green('НОРМА: ДИ=%s; %s' % (val, text[0])))
@@ -214,4 +234,3 @@ def control_SS(val, ref, text=None):
 
 
 del platform  # выгрузить модуль
-print('Импорт tools.tools')

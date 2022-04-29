@@ -8,22 +8,22 @@ import sys
 if 'windows' in platform.system().lower():
     from pathlib import Path
     # sys.path.insert(0, str(Path.cwd().parent.parent.joinpath('ivk')))
-    from simulation_TMI import *  # симуляция ИВКы
-    from ivk.engineers_src.tools.tools import *  # импорт тулс
-    from functions import *  # импорт функций
+    from simulation_TMI import *                    # симуляция ИВКы
+    from ivk.engineers_src.tools.tools import *     # импорт тулс
+    from functions import *                         # импорт функций
 else:
     from engineers_src.tools.tools import *  # импорт тулс
-    from for_EMS.functions import *  # импорт из папки modeles прописа в cpi_framework_connections
+    from engineers_src.for_EMS import *  # импорт из папки modeles прописа в cpi_framework_connections
 
 
 # импорт
 def inp(quest):
     return input(quest)
-#     ans = input(quest)
-#     return ans
 ClassInput.set(inp)
 
-# TODO: прописать в cpi_framework_connections путь к modules
+
+
+# TODO: поменять KIS на класс
 #  поменять KIS на класс
 
 
