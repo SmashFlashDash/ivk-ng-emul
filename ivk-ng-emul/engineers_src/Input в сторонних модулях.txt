@@ -1,0 +1,14 @@
+в скрипте .ivkng прописать:
+from engineers_src.tools.tools import ClassInput         # импорт тулс
+#импорт модулей пример
+from engineers_src.for_EMS.functions import *    # импорт модулей
+# импорт
+def inp(quest):
+    return input(quest)
+ClassInput.set(inp)
+
+в модулях прописать:
+from engineers_src.tools.tools import input_break
+
+Использовать:
+# в модулях вместо __BREAK__  ---- input_break()

@@ -1,0 +1,1823 @@
+{
+    "KPT": {
+        "adress": 4,
+        "shift_adress": 11,
+        "subadress": 0,
+        "shift_subadress": 0,
+        "nDI": null,
+        "UV": {
+            "217": {
+                "nameUV": "КПТ Запит. ЭА331 осн",
+                "uvhex": 16601,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@0}{@2}==on]"
+            },
+            "417": {
+                "nameUV": "КПТ Запит. ЭА331 рез",
+                "uvhex": 16801,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@0}{@2}==on]"
+            },
+            "1017": {
+                "nameUV": "КПТ Снять пит. ЭА331",
+                "uvhex": 17401,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@0}{@2}==off]"
+            },
+            "219": {
+                "nameUV": "КПТ Запит. ЭА332 осн",
+                "uvhex": 16600,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@1}{@2}==on]"
+            },
+            "419": {
+                "nameUV": "КПТ Запит. ЭА332 рез",
+                "uvhex": 16803,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@1}{@2}==on]"
+            },
+            "1019": {
+                "nameUV": "КПТ Снять пит. ЭА332",
+                "uvhex": 17403,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@1}{@2}==on]"
+            }
+        },
+        "DI": {
+            "0": {
+                "nameTMI": "04.02.beKKEA11",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": [
+                    57474,
+                    57476
+                ],
+                "n_bits": null,
+                "describe": "хз че за ДИ мб ФКП РЛЦИ"
+            },
+            "1": {
+                "nameTMI": "04.01.beBAEA11",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": null,
+                "describe": "хз че за ДИ мб ФКП РЛЦИ"
+            },
+            "2": {
+                "nameTMI": "04.02.VKKEA11",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": null,
+                "describe": "хз че за ДИ мб КСП РЛЦИ"
+            },
+            "3": {
+                "nameTMI": "04.02.CKKEA12",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": null,
+                "describe": "хз че за ДИ мб КСП РЛЦИ"
+            }
+        },
+        "MSG": {
+            "m1": {
+                "text": "Есть питание",
+                "type_pause": 0
+            },
+            "m2": {
+                "text": "Нет питания",
+                "type_pause": 0
+            }
+        }
+    },
+    "RLCIV": {
+        "adress": 10,
+        "shift_adress": 11,
+        "subadress": 0,
+        "shift_subadress": 0,
+        "nDI": 1,
+        "UV": {
+            "0": {
+                "nameUV": "РЛЦИВ Вкл ПЧ-О",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@5}{@44}{@46}{@48}{@52}{@54}==on]"
+            },
+            "1": {
+                "nameUV": "РЛЦИВ Вкл ПЧ-Р",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@6}{@45}{@47}{@49}{@53}{@55}==on]"
+            },
+            "2": {
+                "nameUV": "РЛЦИВ ОТКЛ ПЧ",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@5}{@44}{@46}{@48}{@52}{@54}==off] & [{@6}{@45}{@47}{@49}{@53}{@55}==off]"
+            },
+            "3": {
+                "nameUV": "РЛЦИВ Вкл ФИП-О",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": [
+                    5,
+                    3
+                ],
+                "hex_data": null,
+                "rev_tmi": [
+                    "10.01.UM2",
+                    "10.01.MOD1.Н"
+                ],
+                "quest_uv": "[{@1}{@16}{@18}==on] & [{@20}{@23}{@26}{@27}{@28}{@29}==on]"
+            },
+            "4": {
+                "nameUV": "РЛЦИВ Вкл ФИП-Р",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@2}{@17}{@19}==on] & [{@20}{@23}{@26}{@27}{@28}{@29}==on]"
+            },
+            "5": {
+                "nameUV": "РЛЦИВ ОТКЛ ФИП",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@1}{@16}{@18}==off] & [{@2}{@17}{@19}==off] & [{@20}{@23}{@26}{@27}{@28}{@29}==off]"
+            },
+            "6": {
+                "nameUV": "РЛЦИВ Вкл МОД-О",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@3}{@21}{@30}{@32}==on] & [{@44}{@50}==on] & [{@34}{@35}{@36}{@39}{@40}==on]"
+            },
+            "7": {
+                "nameUV": "РЛЦИВ Вкл МОД-Р",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@4}{@22}{@31}{@33}==on] & [{@45}{@51}==on] & [{@34}{@35}{@37}{@39}{@40}==on]"
+            },
+            "8": {
+                "nameUV": "РЛЦИВ ОТКЛ МОД",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@3}{@21}{@30}{@32}==off] & [{@44}{@50}==off] & [{@4}{@22}{@31}{@33}==off] & [{@45}{@51}==off] & [{@34}{@35}{@37}{@39}{@40}==off]"
+            },
+            "9": {
+                "nameUV": "РЛЦИВ Вкл УМ-О",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@7}{@56}{@58}{@60}==on]"
+            },
+            "10": {
+                "nameUV": "РЛЦИВ Вкл УМ-Р",
+                "uvhex": null,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@8}{@57}{@59}{@61}==on]"
+            },
+            "11": {
+                "nameUV": "РЛЦИВ ОТКЛ УМ",
+                "uvhex": 20491,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@7}{@56}{@58}{@60}==off] & [{@8}{@57}{@59}{@61}==off]"
+            },
+            "12": {
+                "nameUV": "РЛЦИВ ВКЛ ИМ-ФИП",
+                "uvhex": 20492,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@20}{@25}==on]"
+            },
+            "13": {
+                "nameUV": "РЛЦИВ ОТКЛ ИМ-ФИП",
+                "uvhex": 20493,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@20}{@25}==off]"
+            },
+            "14": {
+                "nameUV": "РЛЦИВ УСТ РЕЖ М1",
+                "uvhex": 20494,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@35}==1]"
+            },
+            "15": {
+                "nameUV": "РЛЦИВ УСТ РЕЖ М2",
+                "uvhex": 20495,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@35}==2]"
+            },
+            "16": {
+                "nameUV": "РЛЦИВ УСТ РЕЖ М3",
+                "uvhex": 20496,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@35}==3]"
+            },
+            "17": {
+                "nameUV": "РЛЦИВ УСТ РЕЖ М4",
+                "uvhex": 20497,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@35}==4]"
+            },
+            "18": {
+                "nameUV": "РЛЦИВ ВКЛ ИМ-МОД",
+                "uvhex": 20498,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@34}{@38}==on]"
+            },
+            "19": {
+                "nameUV": "РЛЦИВ ОТКЛ ИМ-МОД",
+                "uvhex": 20499,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@34}{@38}==off]"
+            },
+            "20": {
+                "nameUV": "РЛЦИВ ШТАТ RS485",
+                "uvhex": 20500,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": null
+            },
+            "21": {
+                "nameUV": "РЛЦИВ УСТ RS485-О",
+                "uvhex": 20501,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": null
+            },
+            "22": {
+                "nameUV": "РЛЦИВ УСТ RS485-Р",
+                "uvhex": 20502,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": null
+            },
+            "23": {
+                "nameUV": "РЛЦИВ ПУСК ШД",
+                "uvhex": 20503,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": null
+            },
+            "24": {
+                "nameUV": "РЛЦИВ ОСТАН ШД",
+                "uvhex": 20504,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": "[{@67}{@70}==same#1]"
+            },
+            "25": {
+                "nameUV": "РЛЦИВ УСТ ВР ДВИЖ ШД",
+                "uvhex": 20505,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": null
+            },
+            "26": {
+                "nameUV": "РЛЦИВ УСТ СКОР VS1",
+                "uvhex": 20506,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": null
+            },
+            "27": {
+                "nameUV": "РЛЦИВ УСТ СКОР VS2",
+                "uvhex": 20507,
+                "t_TMI": 0,
+                "t_wait": 0,
+                "msg_key": null,
+                "rev_devises": null,
+                "hex_data": null,
+                "rev_tmi": null,
+                "quest_uv": null
+            }
+        },
+        "DI": {
+            "1": {
+                "nameTMI": "10.01.FIP1",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 9",
+                "describe": "Вкл ФИП-О"
+            },
+            "2": {
+                "nameTMI": "10.01.FIP2",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 8",
+                "describe": "Вкл ФИП-Р"
+            },
+            "3": {
+                "nameTMI": "10.01.MOD1",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 11",
+                "describe": "Вкл МОД-О"
+            },
+            "4": {
+                "nameTMI": "10.01.MOD2",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 10",
+                "describe": "Вкл МОД-Р"
+            },
+            "5": {
+                "nameTMI": "10.01.PCH1",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 13",
+                "describe": "Вкл ПЧ-О"
+            },
+            "6": {
+                "nameTMI": "10.01.PCH2",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 12",
+                "describe": "Вкл ПЧ-Р"
+            },
+            "7": {
+                "nameTMI": "10.01.UM1",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 15",
+                "describe": "Вкл УМ-О"
+            },
+            "8": {
+                "nameTMI": "10.01.UM2",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 14",
+                "describe": "Вкл УМ-Р"
+            },
+            "9": {
+                "nameTMI": "10.01.BA_TEMP_CARD",
+                "val_on": [
+                    -55,
+                    125
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "26,15-8",
+                "describe": "Т1 БА (плата)"
+            },
+            "10": {
+                "nameTMI": "10.01.BA_TEMP_CONTR",
+                "val_on": [
+                    -55,
+                    125
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "26, 7-0",
+                "describe": "Т2 БА (контр)"
+            },
+            "11": {
+                "nameTMI": "10.01.ETALON1",
+                "val_on": 47,
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "22, 15-8",
+                "describe": "Эталон R1"
+            },
+            "12": {
+                "nameTMI": "10.01.ETALON2",
+                "val_on": 74.1,
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "22, 7-0",
+                "describe": "Эталон R2"
+            },
+            "13": {
+                "nameTMI": "10.01.SEC",
+                "val_on": "out",
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "9-11, 15-10",
+                "describe": "9й байт используется БШВ"
+            },
+            "14": {
+                "nameTMI": "10.01.NUMB_LAST_UV",
+                "val_on": [
+                    0,
+                    27
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "31, 7-0",
+                "describe": "Код команды"
+            },
+            "15": {
+                "nameTMI": "10.01.FRAME_COUNTER",
+                "val_on": [
+                    0,
+                    255
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "32, 15-8",
+                "describe": "Номер кадра ДИ"
+            },
+            "16": {
+                "nameTMI": "10.01.FIP1_KD1_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 0",
+                "describe": "Питание Б/с ФИП-О"
+            },
+            "17": {
+                "nameTMI": "10.01.FIP2_KD2_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 1",
+                "describe": "Питание Б/с ФИП-О"
+            },
+            "18": {
+                "nameTMI": "10.01.FIP1_ATM13_POW",
+                "val_on": [
+                    1.5,
+                    3
+                ],
+                "val_off": [
+                    0,
+                    0.6
+                ],
+                "uv_fdi": null,
+                "n_bits": "18, 15-8",
+                "describe": "Пит ФИП-О"
+            },
+            "19": {
+                "nameTMI": "10.01.FIP2_ATM14_POW",
+                "val_on": [
+                    1.5,
+                    3
+                ],
+                "val_off": [
+                    0,
+                    0.6
+                ],
+                "uv_fdi": null,
+                "n_bits": "18, 7-0",
+                "describe": "Пит ФИП-Р"
+            },
+            "20": {
+                "nameTMI": "10.01.FIP_INFO",
+                "val_on": 1,
+                "val_off": 0,
+                "uv_fdi": null,
+                "n_bits": "30, 15",
+                "describe": "Режим \"Имитатор ФИП\""
+            },
+            "21": {
+                "nameTMI": "10.01.MOD1_STAT_CONNECT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "30, 9",
+                "describe": "Связь с МОД-О"
+            },
+            "22": {
+                "nameTMI": "10.01.MOD2_STAT_CONNECT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "30, 8",
+                "describe": "Связь с МОД-Р"
+            },
+            "23": {
+                "nameTMI": "10.01.BSK1_STAT_CONNECT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "30, 11",
+                "describe": "Связь с ЦА-О"
+            },
+            "24": {
+                "nameTMI": "10.01.BSK2_STAT_CONNECT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "30, 10",
+                "describe": "Связь с ЦА-Р"
+            },
+            "25": {
+                "nameTMI": "10.01.BSK_STAT_INF",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "30, 12",
+                "describe": "Данные от ЦА"
+            },
+            "26": {
+                "nameTMI": "10.01.FIP_STAT_VOLT_PLL1",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "30, 14",
+                "describe": "Напряжение или Частота Наличие частоты PLL1"
+            },
+            "27": {
+                "nameTMI": "10.01.FIP_STAT_VOLT_PLL2",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "30, 13",
+                "describe": "Наличие частоты PLL2"
+            },
+            "28": {
+                "nameTMI": "10.01.FIP_TEMP_IP",
+                "val_on": [
+                    -55,
+                    125
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "30, 7-0",
+                "describe": "Температура ИП работающего комплекта ФИП"
+            },
+            "29": {
+                "nameTMI": "10.01.FIP_TEMP_PLIS",
+                "val_on": [
+                    -55,
+                    125
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "31, 15-8",
+                "describe": "Температура ПЛИС работающего комплекта ФИП"
+            },
+            "30": {
+                "nameTMI": "10.01.MOD1_KD3_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 2",
+                "describe": "Наличие питания б/с в   МОД-О"
+            },
+            "31": {
+                "nameTMI": "10.01.MOD2_KD4_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 3",
+                "describe": "Наличие питания б/с в  МОД-Р"
+            },
+            "32": {
+                "nameTMI": "10.01.MOD1_ATM15_POW",
+                "val_on": [
+                    3,
+                    5
+                ],
+                "val_off": [
+                    0,
+                    0.6
+                ],
+                "uv_fdi": null,
+                "n_bits": "19, 15-8",
+                "describe": "Контроль напряжения вторичного питания МОД-О"
+            },
+            "33": {
+                "nameTMI": "10.01.MOD2_ATM16_POW",
+                "val_on": [
+                    3,
+                    5
+                ],
+                "val_off": [
+                    0,
+                    0.6
+                ],
+                "uv_fdi": null,
+                "n_bits": "19, 7-0",
+                "describe": "Контроль напряжения вторичного питания МОД-Р"
+            },
+            "34": {
+                "nameTMI": "10.01.MOD_INFO",
+                "val_on": 1,
+                "val_off": 0,
+                "uv_fdi": null,
+                "n_bits": "28, 13",
+                "describe": "Режим \"Имитатор МОД\""
+            },
+            "35": {
+                "nameTMI": "10.01.MODE_M",
+                "val_on": [
+                    0,
+                    4
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "28, 15-14",
+                "describe": "Режим работы модулятора"
+            },
+            "36": {
+                "nameTMI": "10.01.FIP1_STAT_CONNECT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "28, 9",
+                "describe": "Есть ли связь с ФИП-О у работающего комплекта МОД"
+            },
+            "37": {
+                "nameTMI": "10.01.FIP2_STAT_CONNECT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "28, 8",
+                "describe": "Есть ли связь с ФИП-Р у работающего комплекта МОД"
+            },
+            "38": {
+                "nameTMI": "10.01.FIP_STAT_INF",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "28, 10",
+                "describe": "Наличие данных от ФИП"
+            },
+            "39": {
+                "nameTMI": "10.01.MOD_STAT_FREQ_PLL",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "28, 12",
+                "describe": "Наличие частоты PLL"
+            },
+            "40": {
+                "nameTMI": "10.01.MOD_TEMP_PMOD",
+                "val_on": [
+                    -55,
+                    125
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "28, 7-0",
+                "describe": "Температура платы работающего комплекта МОД"
+            },
+            "41": {
+                "nameTMI": "10.01.MOD_TEMP_PLIS",
+                "val_on": [
+                    0,
+                    125
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "29, 15-8",
+                "describe": "Температура ПЛИС работающего комплекта МОД"
+            },
+            "42": {
+                "nameTMI": "10.01.MOD1_SIT1",
+                "val_on": [
+                    47,
+                    74
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "23, 15-8",
+                "describe": "Датчик системы измерения температуры (СИТ) внутри МОД-О"
+            },
+            "43": {
+                "nameTMI": "10.01.MOD2_SIT5",
+                "val_on": [
+                    47,
+                    74
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "25, 15-8",
+                "describe": "Датчик СИТ внутри МОД-Р"
+            },
+            "44": {
+                "nameTMI": "10.01.PCH1_KD12_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 11",
+                "describe": "Наличие питания в ПЧ-О"
+            },
+            "45": {
+                "nameTMI": "10.01.PCH2_KD14_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 13",
+                "describe": "Наличие питания в ПЧ-Р"
+            },
+            "46": {
+                "nameTMI": "10.01.PCH1_KD5_P_SYNT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 4",
+                "describe": "Наличие мощности синтезатора ПЧ-О"
+            },
+            "47": {
+                "nameTMI": "10.01.PCH2_KD6_P_SYNT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 5",
+                "describe": "Наличие мощности синтезатора ПЧ-Р"
+            },
+            "48": {
+                "nameTMI": "10.01.PCH1_KD19_F_SYNT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "21, 2",
+                "describe": "Наличие нужной частоты синтезатора ПЧ-О"
+            },
+            "49": {
+                "nameTMI": "10.01.PCH2_KD20_F_SYNT",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "21, 3",
+                "describe": "Наличие нужной частоты синтезатора ПЧ-Р"
+            },
+            "50": {
+                "nameTMI": "10.01.PCH1_KD21_P_VH",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "21, 4",
+                "describe": "Наличие мощности на входе ПЧ-О"
+            },
+            "51": {
+                "nameTMI": "10.01.PCH2_KD22_P_VH",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "21, 5",
+                "describe": "Наличие мощности на входе ПЧ-Р"
+            },
+            "52": {
+                "nameTMI": "10.01.PCH1_KD7_P_VN",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 6",
+                "describe": "Наличие мощности внутри ПЧ-О"
+            },
+            "53": {
+                "nameTMI": "10.01.PCH2_KD8_P_VN",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 7",
+                "describe": "Наличие мощности внутри ПЧ-Р"
+            },
+            "54": {
+                "nameTMI": "10.01.PCH1_KD23_F_VIH",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "21, 6",
+                "describe": "Наличие частоты на выходе ПЧ-О"
+            },
+            "55": {
+                "nameTMI": "10.01.PCH2_KD24_F_VIH",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "21, 7",
+                "describe": "Наличие частоты на выходе ПЧ-Р"
+            },
+            "56": {
+                "nameTMI": "10.01.UM1_KD11_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 10",
+                "describe": "Наличие питания в УМ-О"
+            },
+            "57": {
+                "nameTMI": "10.01.UM2_KD13_BS",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 12",
+                "describe": "Наличие питания в УМ-Р"
+            },
+            "58": {
+                "nameTMI": "10.01.UM1_KD9_P",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 8",
+                "describe": "Наличие мощности внутри УМ-О"
+            },
+            "59": {
+                "nameTMI": "10.01.UM2_KD10_P",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "20, 9",
+                "describe": "Наличие мощности внутри УМ-Р"
+            },
+            "60": {
+                "nameTMI": "10.01.UM1_ATM1_P_OUT",
+                "val_on": [
+                    1,
+                    2.5
+                ],
+                "val_off": [
+                    0,
+                    0.3
+                ],
+                "uv_fdi": null,
+                "n_bits": "12, 15-8",
+                "describe": "Уровень выходной мощности УМ-О"
+            },
+            "61": {
+                "nameTMI": "10.01.UM2_ATM2_P_OUT",
+                "val_on": [
+                    1,
+                    2.5
+                ],
+                "val_off": [
+                    0,
+                    0.3
+                ],
+                "uv_fdi": null,
+                "n_bits": "12, 7-0",
+                "describe": "Уровень выходной мощности УМ-Р"
+            },
+            "62": {
+                "nameTMI": "10.01.KONV_SIT6",
+                "val_on": [
+                    78.7,
+                    121.3
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "25, 7-0",
+                "describe": "Датчик СИТ внутри конвертера передатчика"
+            },
+            "63": {
+                "nameTMI": "10.01.AFU_END_NP_OX",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 7",
+                "describe": "Антенна была в начальном положении (НП) по оси X (датчик начального положения (ДНП X) срабатывал)"
+            },
+            "64": {
+                "nameTMI": "10.01.AFU_END_NP_OZ",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "6, 6",
+                "describe": "Антенна была в начальном положении по оси Z (ДНП Z срабатывал)"
+            },
+            "65": {
+                "nameTMI": "10.01.AFU_STAT_DNP_OX",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "7, 14",
+                "describe": "Антенна в начальном положении по оси X"
+            },
+            "66": {
+                "nameTMI": "10.01.AFU_STAT_DKP_OX",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "7, 15",
+                "describe": "Антенна в конечном положении по оси X"
+            },
+            "67": {
+                "nameTMI": "10.01.AFU_SEND_IMPULSE_OX",
+                "val_on": [
+                    0,
+                    16383
+                ],
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "7, 13-0",
+                "describe": "Отклонение от НП по оси X в шагах двигателя"
+            },
+            "68": {
+                "nameTMI": "10.01.AFU_STAT_DNP_OZ",
+                "val_on": 0,
+                "val_off": 1,
+                "uv_fdi": null,
+                "n_bits": "8, 14",
+                "describe": "Антенна в начальном положении по оси Z"
+            },
+            "69": {
+                "nameTMI": "10.01.AFU_STAT_DKP_OZ",
+                "val_on": "Включено",
+                "val_off": "Выключено",
+                "uv_fdi": null,
+                "n_bits": "8, 15",
+                "describe": "Антенна в конечном положении по оси Z"
+            },
+            "70": {
+                "nameTMI": "10.01.AFU_SEND_IMPULSE_OZ",
+                "val_on": {
+                    "0": [
+                        0,
+                        16383
+                    ],
+                    "1": "out"
+                },
+                "val_off": null,
+                "uv_fdi": null,
+                "n_bits": "8,                 13-0",
+                "describe": "Отклонение от НП по оси Z в шагах двигателя"
+            }
+        },
+        "MSG": {
+            "m1": {
+                "text": "Подать 27В на РЛЦИ-В",
+                "type_pause": 1
+            },
+            "m2": {
+                "text": "Установить режим \"Иммитатор ЦА-О\"",
+                "type_pause": 1
+            },
+            "m3": {
+                "text": "Начать работу с БА-О",
+                "type_pause": 1
+            },
+            "m4": {
+                "text": "Остановить работу с БА-О",
+                "type_pause": 1
+            },
+            "m5": {
+                "text": "Отключить имитатор ЦА (Снять \"галочку\" с \"ЦА-О\" и нажать кнопку \"Установить режим\"",
+                "type_pause": 1
+            },
+            "m6": {
+                "text": "Установить режим «Имитатор ЦА-Р»",
+                "type_pause": 1
+            },
+            "m7": {
+                "text": "Начать работу с БА-Р»",
+                "type_pause": 1
+            },
+            "m8": {
+                "text": "Остановить работу с БА-Р»",
+                "type_pause": 1
+            },
+            "k1": {
+                "text": "ВИЗ КОНТРОЛЬ НА СПР (данные)",
+                "type_pause": 1
+            },
+            "k2": {
+                "text": "КОНТРОЛЬ ПОТРЕБ МОЩН",
+                "type_pause": 1
+            },
+            "k3": {
+                "text": "КОНТРОЛЬ МОЩН ВЧ-СИГНАЛА",
+                "type_pause": 1
+            },
+            "k4": {
+                "text": "Регистрация Запись файла",
+                "type_pause": 1
+            },
+            "k5": {
+                "text": "Подождать 12 ± 2 мин. Время контролировать в окне «Время работы УМ» в программе «ФКИП-ИС-В»»",
+                "type_pause": 1
+            }
+        }
+    },
+    "clear_buf": 57607,
+    "all_cyphs": {
+        "04.02.beKKEA11": {
+            "nameTMI": "04.02.beKKEA11",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": [
+                57474,
+                57476
+            ],
+            "n_bits": null,
+            "describe": "хз че за ДИ мб ФКП РЛЦИ"
+        },
+        "04.01.beBAEA11": {
+            "nameTMI": "04.01.beBAEA11",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": null,
+            "describe": "хз че за ДИ мб ФКП РЛЦИ"
+        },
+        "04.02.VKKEA11": {
+            "nameTMI": "04.02.VKKEA11",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": null,
+            "describe": "хз че за ДИ мб КСП РЛЦИ"
+        },
+        "04.02.CKKEA12": {
+            "nameTMI": "04.02.CKKEA12",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": null,
+            "describe": "хз че за ДИ мб КСП РЛЦИ"
+        },
+        "10.01.FIP1": {
+            "nameTMI": "10.01.FIP1",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 9",
+            "describe": "Вкл ФИП-О"
+        },
+        "10.01.FIP2": {
+            "nameTMI": "10.01.FIP2",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 8",
+            "describe": "Вкл ФИП-Р"
+        },
+        "10.01.MOD1": {
+            "nameTMI": "10.01.MOD1",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 11",
+            "describe": "Вкл МОД-О"
+        },
+        "10.01.MOD2": {
+            "nameTMI": "10.01.MOD2",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 10",
+            "describe": "Вкл МОД-Р"
+        },
+        "10.01.PCH1": {
+            "nameTMI": "10.01.PCH1",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 13",
+            "describe": "Вкл ПЧ-О"
+        },
+        "10.01.PCH2": {
+            "nameTMI": "10.01.PCH2",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 12",
+            "describe": "Вкл ПЧ-Р"
+        },
+        "10.01.UM1": {
+            "nameTMI": "10.01.UM1",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 15",
+            "describe": "Вкл УМ-О"
+        },
+        "10.01.UM2": {
+            "nameTMI": "10.01.UM2",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 14",
+            "describe": "Вкл УМ-Р"
+        },
+        "10.01.BA_TEMP_CARD": {
+            "nameTMI": "10.01.BA_TEMP_CARD",
+            "val_on": [
+                -55,
+                125
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "26,15-8",
+            "describe": "Т1 БА (плата)"
+        },
+        "10.01.BA_TEMP_CONTR": {
+            "nameTMI": "10.01.BA_TEMP_CONTR",
+            "val_on": [
+                -55,
+                125
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "26, 7-0",
+            "describe": "Т2 БА (контр)"
+        },
+        "10.01.ETALON1": {
+            "nameTMI": "10.01.ETALON1",
+            "val_on": 47,
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "22, 15-8",
+            "describe": "Эталон R1"
+        },
+        "10.01.ETALON2": {
+            "nameTMI": "10.01.ETALON2",
+            "val_on": 74.1,
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "22, 7-0",
+            "describe": "Эталон R2"
+        },
+        "10.01.SEC": {
+            "nameTMI": "10.01.SEC",
+            "val_on": "out",
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "9-11, 15-10",
+            "describe": "9й байт используется БШВ"
+        },
+        "10.01.NUMB_LAST_UV": {
+            "nameTMI": "10.01.NUMB_LAST_UV",
+            "val_on": [
+                0,
+                27
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "31, 7-0",
+            "describe": "Код команды"
+        },
+        "10.01.FRAME_COUNTER": {
+            "nameTMI": "10.01.FRAME_COUNTER",
+            "val_on": [
+                0,
+                255
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "32, 15-8",
+            "describe": "Номер кадра ДИ"
+        },
+        "10.01.FIP1_KD1_BS": {
+            "nameTMI": "10.01.FIP1_KD1_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 0",
+            "describe": "Питание Б/с ФИП-О"
+        },
+        "10.01.FIP2_KD2_BS": {
+            "nameTMI": "10.01.FIP2_KD2_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 1",
+            "describe": "Питание Б/с ФИП-О"
+        },
+        "10.01.FIP1_ATM13_POW": {
+            "nameTMI": "10.01.FIP1_ATM13_POW",
+            "val_on": [
+                1.5,
+                3
+            ],
+            "val_off": [
+                0,
+                0.6
+            ],
+            "uv_fdi": null,
+            "n_bits": "18, 15-8",
+            "describe": "Пит ФИП-О"
+        },
+        "10.01.FIP2_ATM14_POW": {
+            "nameTMI": "10.01.FIP2_ATM14_POW",
+            "val_on": [
+                1.5,
+                3
+            ],
+            "val_off": [
+                0,
+                0.6
+            ],
+            "uv_fdi": null,
+            "n_bits": "18, 7-0",
+            "describe": "Пит ФИП-Р"
+        },
+        "10.01.FIP_INFO": {
+            "nameTMI": "10.01.FIP_INFO",
+            "val_on": 1,
+            "val_off": 0,
+            "uv_fdi": null,
+            "n_bits": "30, 15",
+            "describe": "Режим \"Имитатор ФИП\""
+        },
+        "10.01.MOD1_STAT_CONNECT": {
+            "nameTMI": "10.01.MOD1_STAT_CONNECT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "30, 9",
+            "describe": "Связь с МОД-О"
+        },
+        "10.01.MOD2_STAT_CONNECT": {
+            "nameTMI": "10.01.MOD2_STAT_CONNECT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "30, 8",
+            "describe": "Связь с МОД-Р"
+        },
+        "10.01.BSK1_STAT_CONNECT": {
+            "nameTMI": "10.01.BSK1_STAT_CONNECT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "30, 11",
+            "describe": "Связь с ЦА-О"
+        },
+        "10.01.BSK2_STAT_CONNECT": {
+            "nameTMI": "10.01.BSK2_STAT_CONNECT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "30, 10",
+            "describe": "Связь с ЦА-Р"
+        },
+        "10.01.BSK_STAT_INF": {
+            "nameTMI": "10.01.BSK_STAT_INF",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "30, 12",
+            "describe": "Данные от ЦА"
+        },
+        "10.01.FIP_STAT_VOLT_PLL1": {
+            "nameTMI": "10.01.FIP_STAT_VOLT_PLL1",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "30, 14",
+            "describe": "Напряжение или Частота Наличие частоты PLL1"
+        },
+        "10.01.FIP_STAT_VOLT_PLL2": {
+            "nameTMI": "10.01.FIP_STAT_VOLT_PLL2",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "30, 13",
+            "describe": "Наличие частоты PLL2"
+        },
+        "10.01.FIP_TEMP_IP": {
+            "nameTMI": "10.01.FIP_TEMP_IP",
+            "val_on": [
+                -55,
+                125
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "30, 7-0",
+            "describe": "Температура ИП работающего комплекта ФИП"
+        },
+        "10.01.FIP_TEMP_PLIS": {
+            "nameTMI": "10.01.FIP_TEMP_PLIS",
+            "val_on": [
+                -55,
+                125
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "31, 15-8",
+            "describe": "Температура ПЛИС работающего комплекта ФИП"
+        },
+        "10.01.MOD1_KD3_BS": {
+            "nameTMI": "10.01.MOD1_KD3_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 2",
+            "describe": "Наличие питания б/с в   МОД-О"
+        },
+        "10.01.MOD2_KD4_BS": {
+            "nameTMI": "10.01.MOD2_KD4_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 3",
+            "describe": "Наличие питания б/с в  МОД-Р"
+        },
+        "10.01.MOD1_ATM15_POW": {
+            "nameTMI": "10.01.MOD1_ATM15_POW",
+            "val_on": [
+                3,
+                5
+            ],
+            "val_off": [
+                0,
+                0.6
+            ],
+            "uv_fdi": null,
+            "n_bits": "19, 15-8",
+            "describe": "Контроль напряжения вторичного питания МОД-О"
+        },
+        "10.01.MOD2_ATM16_POW": {
+            "nameTMI": "10.01.MOD2_ATM16_POW",
+            "val_on": [
+                3,
+                5
+            ],
+            "val_off": [
+                0,
+                0.6
+            ],
+            "uv_fdi": null,
+            "n_bits": "19, 7-0",
+            "describe": "Контроль напряжения вторичного питания МОД-Р"
+        },
+        "10.01.MOD_INFO": {
+            "nameTMI": "10.01.MOD_INFO",
+            "val_on": 1,
+            "val_off": 0,
+            "uv_fdi": null,
+            "n_bits": "28, 13",
+            "describe": "Режим \"Имитатор МОД\""
+        },
+        "10.01.MODE_M": {
+            "nameTMI": "10.01.MODE_M",
+            "val_on": [
+                0,
+                4
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "28, 15-14",
+            "describe": "Режим работы модулятора"
+        },
+        "10.01.FIP1_STAT_CONNECT": {
+            "nameTMI": "10.01.FIP1_STAT_CONNECT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "28, 9",
+            "describe": "Есть ли связь с ФИП-О у работающего комплекта МОД"
+        },
+        "10.01.FIP2_STAT_CONNECT": {
+            "nameTMI": "10.01.FIP2_STAT_CONNECT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "28, 8",
+            "describe": "Есть ли связь с ФИП-Р у работающего комплекта МОД"
+        },
+        "10.01.FIP_STAT_INF": {
+            "nameTMI": "10.01.FIP_STAT_INF",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "28, 10",
+            "describe": "Наличие данных от ФИП"
+        },
+        "10.01.MOD_STAT_FREQ_PLL": {
+            "nameTMI": "10.01.MOD_STAT_FREQ_PLL",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "28, 12",
+            "describe": "Наличие частоты PLL"
+        },
+        "10.01.MOD_TEMP_PMOD": {
+            "nameTMI": "10.01.MOD_TEMP_PMOD",
+            "val_on": [
+                -55,
+                125
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "28, 7-0",
+            "describe": "Температура платы работающего комплекта МОД"
+        },
+        "10.01.MOD_TEMP_PLIS": {
+            "nameTMI": "10.01.MOD_TEMP_PLIS",
+            "val_on": [
+                0,
+                125
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "29, 15-8",
+            "describe": "Температура ПЛИС работающего комплекта МОД"
+        },
+        "10.01.MOD1_SIT1": {
+            "nameTMI": "10.01.MOD1_SIT1",
+            "val_on": [
+                47,
+                74
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "23, 15-8",
+            "describe": "Датчик системы измерения температуры (СИТ) внутри МОД-О"
+        },
+        "10.01.MOD2_SIT5": {
+            "nameTMI": "10.01.MOD2_SIT5",
+            "val_on": [
+                47,
+                74
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "25, 15-8",
+            "describe": "Датчик СИТ внутри МОД-Р"
+        },
+        "10.01.PCH1_KD12_BS": {
+            "nameTMI": "10.01.PCH1_KD12_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 11",
+            "describe": "Наличие питания в ПЧ-О"
+        },
+        "10.01.PCH2_KD14_BS": {
+            "nameTMI": "10.01.PCH2_KD14_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 13",
+            "describe": "Наличие питания в ПЧ-Р"
+        },
+        "10.01.PCH1_KD5_P_SYNT": {
+            "nameTMI": "10.01.PCH1_KD5_P_SYNT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 4",
+            "describe": "Наличие мощности синтезатора ПЧ-О"
+        },
+        "10.01.PCH2_KD6_P_SYNT": {
+            "nameTMI": "10.01.PCH2_KD6_P_SYNT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 5",
+            "describe": "Наличие мощности синтезатора ПЧ-Р"
+        },
+        "10.01.PCH1_KD19_F_SYNT": {
+            "nameTMI": "10.01.PCH1_KD19_F_SYNT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "21, 2",
+            "describe": "Наличие нужной частоты синтезатора ПЧ-О"
+        },
+        "10.01.PCH2_KD20_F_SYNT": {
+            "nameTMI": "10.01.PCH2_KD20_F_SYNT",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "21, 3",
+            "describe": "Наличие нужной частоты синтезатора ПЧ-Р"
+        },
+        "10.01.PCH1_KD21_P_VH": {
+            "nameTMI": "10.01.PCH1_KD21_P_VH",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "21, 4",
+            "describe": "Наличие мощности на входе ПЧ-О"
+        },
+        "10.01.PCH2_KD22_P_VH": {
+            "nameTMI": "10.01.PCH2_KD22_P_VH",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "21, 5",
+            "describe": "Наличие мощности на входе ПЧ-Р"
+        },
+        "10.01.PCH1_KD7_P_VN": {
+            "nameTMI": "10.01.PCH1_KD7_P_VN",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 6",
+            "describe": "Наличие мощности внутри ПЧ-О"
+        },
+        "10.01.PCH2_KD8_P_VN": {
+            "nameTMI": "10.01.PCH2_KD8_P_VN",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 7",
+            "describe": "Наличие мощности внутри ПЧ-Р"
+        },
+        "10.01.PCH1_KD23_F_VIH": {
+            "nameTMI": "10.01.PCH1_KD23_F_VIH",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "21, 6",
+            "describe": "Наличие частоты на выходе ПЧ-О"
+        },
+        "10.01.PCH2_KD24_F_VIH": {
+            "nameTMI": "10.01.PCH2_KD24_F_VIH",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "21, 7",
+            "describe": "Наличие частоты на выходе ПЧ-Р"
+        },
+        "10.01.UM1_KD11_BS": {
+            "nameTMI": "10.01.UM1_KD11_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 10",
+            "describe": "Наличие питания в УМ-О"
+        },
+        "10.01.UM2_KD13_BS": {
+            "nameTMI": "10.01.UM2_KD13_BS",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 12",
+            "describe": "Наличие питания в УМ-Р"
+        },
+        "10.01.UM1_KD9_P": {
+            "nameTMI": "10.01.UM1_KD9_P",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 8",
+            "describe": "Наличие мощности внутри УМ-О"
+        },
+        "10.01.UM2_KD10_P": {
+            "nameTMI": "10.01.UM2_KD10_P",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "20, 9",
+            "describe": "Наличие мощности внутри УМ-Р"
+        },
+        "10.01.UM1_ATM1_P_OUT": {
+            "nameTMI": "10.01.UM1_ATM1_P_OUT",
+            "val_on": [
+                1,
+                2.5
+            ],
+            "val_off": [
+                0,
+                0.3
+            ],
+            "uv_fdi": null,
+            "n_bits": "12, 15-8",
+            "describe": "Уровень выходной мощности УМ-О"
+        },
+        "10.01.UM2_ATM2_P_OUT": {
+            "nameTMI": "10.01.UM2_ATM2_P_OUT",
+            "val_on": [
+                1,
+                2.5
+            ],
+            "val_off": [
+                0,
+                0.3
+            ],
+            "uv_fdi": null,
+            "n_bits": "12, 7-0",
+            "describe": "Уровень выходной мощности УМ-Р"
+        },
+        "10.01.KONV_SIT6": {
+            "nameTMI": "10.01.KONV_SIT6",
+            "val_on": [
+                78.7,
+                121.3
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "25, 7-0",
+            "describe": "Датчик СИТ внутри конвертера передатчика"
+        },
+        "10.01.AFU_END_NP_OX": {
+            "nameTMI": "10.01.AFU_END_NP_OX",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 7",
+            "describe": "Антенна была в начальном положении (НП) по оси X (датчик начального положения (ДНП X) срабатывал)"
+        },
+        "10.01.AFU_END_NP_OZ": {
+            "nameTMI": "10.01.AFU_END_NP_OZ",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "6, 6",
+            "describe": "Антенна была в начальном положении по оси Z (ДНП Z срабатывал)"
+        },
+        "10.01.AFU_STAT_DNP_OX": {
+            "nameTMI": "10.01.AFU_STAT_DNP_OX",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "7, 14",
+            "describe": "Антенна в начальном положении по оси X"
+        },
+        "10.01.AFU_STAT_DKP_OX": {
+            "nameTMI": "10.01.AFU_STAT_DKP_OX",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "7, 15",
+            "describe": "Антенна в конечном положении по оси X"
+        },
+        "10.01.AFU_SEND_IMPULSE_OX": {
+            "nameTMI": "10.01.AFU_SEND_IMPULSE_OX",
+            "val_on": [
+                0,
+                16383
+            ],
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "7, 13-0",
+            "describe": "Отклонение от НП по оси X в шагах двигателя"
+        },
+        "10.01.AFU_STAT_DNP_OZ": {
+            "nameTMI": "10.01.AFU_STAT_DNP_OZ",
+            "val_on": 0,
+            "val_off": 1,
+            "uv_fdi": null,
+            "n_bits": "8, 14",
+            "describe": "Антенна в начальном положении по оси Z"
+        },
+        "10.01.AFU_STAT_DKP_OZ": {
+            "nameTMI": "10.01.AFU_STAT_DKP_OZ",
+            "val_on": "Включено",
+            "val_off": "Выключено",
+            "uv_fdi": null,
+            "n_bits": "8, 15",
+            "describe": "Антенна в конечном положении по оси Z"
+        },
+        "10.01.AFU_SEND_IMPULSE_OZ": {
+            "nameTMI": "10.01.AFU_SEND_IMPULSE_OZ",
+            "val_on": {
+                "0": [
+                    0,
+                    16383
+                ],
+                "1": "out"
+            },
+            "val_off": null,
+            "uv_fdi": null,
+            "n_bits": "8,                 13-0",
+            "describe": "Отклонение от НП по оси Z в шагах двигателя"
+        }
+    }
+}
