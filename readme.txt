@@ -10,3 +10,7 @@ else:
     from engineers_src.tools.ivk_imports import *
     from engineers_src.tools.tools import *  # импорт тулс
     from engineers_src.for_EMS.functions import *  # импорт из папки modeles прописа в cpi_framework_connections
+
+модули кидать в ivk-eg-emul/engineers_src/for...
+запуск из test-py
+по кодовности переименовать в .ivkng и закинуть в test-ivkng

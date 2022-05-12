@@ -59,7 +59,7 @@ class Text:
         return color + cls._tab * tab + text + cls.default_color
 
     @classmethod
-    def title(cls, text, tab=None, color='yellow'):
+    def title(cls, text, color='yellow', tab=None, ):
         '''
         заголовок
             param text:     text
@@ -121,8 +121,8 @@ def yprint(text, sub=0):
     print(Text.text(text, 'yellow', sub))
 
 
-def tprint(text, tab=None, color='yellow'):
-    print(Text.title(text, color, tab))
+def tprint(text, sub=None, color='yellow', ):
+    print(Text.title(text, color, sub))
 
 
 def proc_print(text):
@@ -187,7 +187,7 @@ def send_SOTC(n, wait=0, describe=""):
     sleep(wait)
 
 
-# TODO: добавить тестов
+# TODO: добавить тестов на поле text
 def control_SS(val, ref, text=None):
     '''
     Проверка параметра запрашиваемого из БД
@@ -218,27 +218,42 @@ def control_SS(val, ref, text=None):
     else:
         raise ValueError('control_SS @text: get only 2 list parametrs')
 
-    if isinstance(ref, str):
-        ref = ref.strip()
-
-        # TODO: калибр некалибр определяется по типу val: str int float, заменяется \bx\b
-        #  при двух x в тексте должен вылетать с ошибкой
-        # добавит
-        regex = re.search(r'\bx\b', ref)
-        try:
-            if regex:
-                pos = regex.span()
-                val = str(val) if isinstance(val, (int, float)) else '\'' + str(val) + '\''
-                expression = ref[:pos[0]] + val + ref[pos[1]:]
-                bool_eval = eval(expression)
-            else:
-                bool_eval = val == ref
-        except TypeError as ex:
-            bool_eval = False  # если из БД вернулся None
-    elif isinstance(ref, (int, float)):
-        bool_eval = val == ref
+    # замена строки x в выражении
+    if val is None:
+        bool_eval = False  # если из БД вернулся None
     else:
-        raise ValueError('Параметр ref имеет не тот тип данных в control_SS')
+        repl = '\'' + val + '\'' if isinstance(val, str) else val
+        expression = re.sub(r'\bx\b', val, ref)
+        bool_eval = eval(expression)
+
+        pass
+
+    # if isinstance(ref, str):
+    #     ref = ref.strip()
+    #
+    #     # TODO: калибр некалибр определяется по типу val: str int float, заменяется \bx\b
+    #     #  при двух x в тексте должен заменяться
+    #     regex = re.search(r'\bx\b', ref)
+    #     if val is None:
+    #         bool_eval = False  # если из БД вернулся None
+    #     elif ():
+    #         pass
+    #
+    #     try:
+    #         if regex:
+    #
+    #             pos = regex.span()
+    #             val = str(val) if isinstance(val, (int, float)) else '\'' + str(val) + '\''
+    #             expression = ref[:pos[0]] + val + ref[pos[1]:]
+    #             bool_eval = eval(expression)
+    #         else:
+    #             bool_eval = val == ref
+    #     except TypeError as ex:
+    #         bool_eval = False  # если из БД вернулся None
+    # elif isinstance(ref, (int, float)):
+    #     bool_eval = val == ref
+    # else:
+    #     raise ValueError('Параметр ref имеет не тот тип данных в control_SS')
 
     # Вывод результата
     if bool_eval:
