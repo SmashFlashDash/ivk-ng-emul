@@ -19,24 +19,25 @@ def inp(quest):
 ClassInput.set(inp)
 
 
-cprint('text', color = 'green')
+cprint('text', color='green')
 gprint('text')
 bprint('text')
 rprint('text')
 yprint('text')
-tprint('text', sub=1, color='yellow')
+tprint('text', tab=1, color='yellow')
 proc_print('text')
 comm_print('text')
 send_SOTC(2, wait=0, describe="")
-control_SS(2, 'x==2 and x==2 ', text=None)  # - для проверки параметра (val=Ex.get(), ref=str '2 <= x ==2'', text [])
+s = control_SS(2, '{x}==2 and {x}==2 ', text=None)
+print('Проверка contorl_ss: %s' % s)  # - для проверки параметра (val=Ex.get(), expression=str '2 <= x ==2'', text [])
 
 
 #############     MAIN      ###########################
 print()
-tprint('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА НА ЭМС ЧАСТЬ 1 НАСТРОЙКА РЭС', sub=3)
+yprint('ИСПЫТАНИЕ: АИП ИСПЫТАНИЙ МКА НА ЭМС ЧАСТЬ 1 НАСТРОЙКА РЭС', tab=3)
 print()
 
-tprint('НАСТРОЙКА РЛ КИС И ЗАМЕР ИСХОДНОЙ ЧУВСТВИТЕЛЬНОСТИ ПРМ1', -1)
+yprint('НАСТРОЙКА РЛ КИС И ЗАМЕР ИСХОДНОЙ ЧУВСТВИТЕЛЬНОСТИ ПРМ1', tab=2)
 
 started_KIS_session = KIS_mode_session(1)  # БАРЛ в сеансный режим
 TMIdevs['15.00.NRK' + '1\\2']['НЕКАЛИБР ТЕКУЩ'] = [14, 14]  # симуляция ТМИ

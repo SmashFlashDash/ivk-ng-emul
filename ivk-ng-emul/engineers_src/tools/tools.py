@@ -101,28 +101,28 @@ class Text:
         return cls.default_color + text + cls.default_color
 
 
-def cprint(text, color=None, sub=0):
-    print(Text.text(text, color, sub))
+def cprint(text, color=None, tab=0):
+    print(Text.text(text, color, tab))
 
 
-def gprint(text, sub=0):
-    print(Text.text(text, 'green', sub))
+def gprint(text, tab=0):
+    print(Text.text(text, 'green', tab))
 
 
-def rprint(text, sub=0):
-    print(Text.text(text, 'red', sub))
+def rprint(text, tab=0):
+    print(Text.text(text, 'red', tab))
 
 
-def bprint(text, sub=0):
-    print(Text.text(text, 'blue', sub))
+def bprint(text, tab=0):
+    print(Text.text(text, 'blue', tab))
 
 
-def yprint(text, sub=0):
-    print(Text.text(text, 'yellow', sub))
+def yprint(text, tab=0):
+    print(Text.text(text, 'yellow', tab))
 
 
-def tprint(text, sub=None, color='yellow', ):
-    print(Text.title(text, color, sub))
+def tprint(text, tab=None, color='yellow', ):
+    print(Text.title(text, color, tab))
 
 
 def proc_print(text):
@@ -188,13 +188,15 @@ def send_SOTC(n, wait=0, describe=""):
 
 
 # TODO: добавить тестов на поле text
-def control_SS(val, ref, text=None):
+def control_SS(val, expression, text=None):
     '''
     Проверка параметра запрашиваемого из БД
+    ВНИМАНИЕ: если val: int сравнивается с 'КАЛИБР' значением вернет False
+    в expression подстановку перменной обозначать {x}
 
         Parameters:
-            val (int, str): значение полученное из БД
-            ref (int, str): калибр (str), некалибр (int), выражение формата
+            val (int, float, str): значение полученное из БД
+            expression (int, str): выражение
                 x == "Вкл",
                 not (x != 38),
                 90 < x <= 210,
@@ -218,42 +220,17 @@ def control_SS(val, ref, text=None):
     else:
         raise ValueError('control_SS @text: get only 2 list parametrs')
 
-    # замена строки x в выражении
     if val is None:
         bool_eval = False  # если из БД вернулся None
     else:
-        repl = '\'' + val + '\'' if isinstance(val, str) else val
-        expression = re.sub(r'\bx\b', val, ref)
+        # TODO: бросить исключение если в eval поадает int==str в expression
+        ## или будет выкидывать False
+        ## абстрактное синтаксическое дерево
+        ## определять калибр по разному заменять
+        # если val - str взять в каввчки, int float к str
+        repl = '\'' + val + '\'' if isinstance(val, str) else str(val)
+        expression = re.sub('{x}', repl, expression)
         bool_eval = eval(expression)
-
-        pass
-
-    # if isinstance(ref, str):
-    #     ref = ref.strip()
-    #
-    #     # TODO: калибр некалибр определяется по типу val: str int float, заменяется \bx\b
-    #     #  при двух x в тексте должен заменяться
-    #     regex = re.search(r'\bx\b', ref)
-    #     if val is None:
-    #         bool_eval = False  # если из БД вернулся None
-    #     elif ():
-    #         pass
-    #
-    #     try:
-    #         if regex:
-    #
-    #             pos = regex.span()
-    #             val = str(val) if isinstance(val, (int, float)) else '\'' + str(val) + '\''
-    #             expression = ref[:pos[0]] + val + ref[pos[1]:]
-    #             bool_eval = eval(expression)
-    #         else:
-    #             bool_eval = val == ref
-    #     except TypeError as ex:
-    #         bool_eval = False  # если из БД вернулся None
-    # elif isinstance(ref, (int, float)):
-    #     bool_eval = val == ref
-    # else:
-    #     raise ValueError('Параметр ref имеет не тот тип данных в control_SS')
 
     # Вывод результата
     if bool_eval:

@@ -56,7 +56,7 @@ class KIS:
         print(Text.subtitle('ВКЛ БАРЛ ПРОВЕРКА ПРИЕМА'))
         send_SOTC(n, 1, 'Включить БАРЛ 1')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
         # control_SS(val=Ex.get('КПА', 'ДИ_КПА', 'прием_КА'),
-        #            ref='x==1',
+        #            expression='x==1',
         #            text=['ЕСТЬ ПРИЕМ С МКА', 'НЕТ ПРИЁМА С МКА'])
 
         print(Text.subtitle('ФИКСАЦИЯ СВЯЗИ (№38 5 РАЗ)'))
@@ -109,7 +109,7 @@ class KIS:
         print(Text.subtitle('ПЕРЕВОД КИС В ДР'))
         send_SOTC(5, wait=5, describe='Выключить БАРЛ')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
         # control_SS(val=Ex.get('КПА', 'ДИ_КПА', 'прием_КА'),
-        #            ref='x != 1',
+        #            expression='x != 1',
         #            text=['НЕТ ПРИЁМА С МКА', 'ЕСТЬ ПРИЕМ С МКА'])
 
         print(Text.subtitle('ПЕРЕВОД КИС В ДР ВЫПОЛНЕН'))

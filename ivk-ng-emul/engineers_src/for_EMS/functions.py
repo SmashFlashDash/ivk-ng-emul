@@ -23,50 +23,50 @@ def KIS_mode_session(n):
     nbarl = barls[n]
 
     print()
-    print(Text.title('ВКЛ КИС В СР: БАРЛ %s' % n, -1))
+    yprint('ВКЛ КИС В СР: БАРЛ %s' % n, tab=1)
     started_KIS_session = datetime.now()
 
-    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
-    print(Text.processing('Отправка: КПА-Мощность-Вверх'))
+    yprint('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)')
+    proc_print('Отправка: КПА-Мощность-Вверх')
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
 
     # sleep 15
-    print(Text.subtitle('ВКЛ БАРЛ ПРОВЕРКА ПРИЕМА'))
+    yprint('ВКЛ БАРЛ ПРОВЕРКА ПРИЕМА')
     send_SOTC(n, 1, 'Включить БАРЛ 1')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
     control_SS(val=Ex.get('КПА', 'ДИ_КПА', 'прием_КА'),
-               ref='x==1',
+               expression='{x}==1',
                text=['ЕСТЬ ПРИЕМ С МКА', 'НЕТ ПРИЁМА С МКА'])
 
-    print(Text.subtitle('ФИКСАЦИЯ СВЯЗИ (№38 5 РАЗ)'))
+    yprint('ФИКСАЦИЯ СВЯЗИ (№38 5 РАЗ)')
     for i in range(1, 6):
         send_SOTC(38, 1)  # Выдача РК 38
     control_SS(val=Ex.get('ТМИ', '15.00.NRK' + nbarl, 'НЕКАЛИБР ТЕКУЩ'),
-               ref='x == 38',  # not (x != 38)
+               expression='{x} == 38',  # not (x != 38)
                text=['Верный код РК', 'Неверный код РК'])
 
-    print(Text.subtitle('ПРОВЕРКА СОСТОЯНИЯ ТАЙМЕРА ОТКЛ ПРД (0 – ВЫКЛ)'))
+    yprint('ПРОВЕРКА СОСТОЯНИЯ ТАЙМЕРА ОТКЛ ПРД (0 – ВЫКЛ)')
     control_SS(val=Ex.get('ТМИ', '15.00.TOTKLPRD' + nbarl, 'НЕКАЛИБР ТЕКУЩ'),
-               ref='x == 0',
+               expression='{x} == 0',
                text=['ТАЙМЕР ОТКЛ ПРД ВЫКЛ', 'ТАЙМЕР ОТКЛ ПРД ВКЛ'])
 
-    print(Text.subtitle('ПРОВЕРКА ОБМЕНА ПО МКПД. ДИ = 1 - РАБОТАЕТ'))
+    yprint('ПРОВЕРКА ОБМЕНА ПО МКПД. ДИ = 1 - РАБОТАЕТ')
     control_SS(val=Ex.get('ТМИ', '15.00.MKPD' + nbarl, 'НЕКАЛИБР ТЕКУЩ'),
-               ref='x == 1',
+               expression='{x} == 1',
                text=['ЕСТЬ ОБМЕН МКПД', 'НЕТ ОБМЕНА МКПД'])
 
-    print(Text.subtitle('ПРОВЕРКА НОМЕРА АКТИВНОГО КОМПЛЕКТА БАРЛ'))
+    yprint('ПРОВЕРКА НОМЕРА АКТИВНОГО КОМПЛЕКТА БАРЛ')
     control_SS(val=Ex.get('ТМИ', '15.00.NBARL', 'НЕКАЛИБР ТЕКУЩ'),
-               ref='x == %d' % (n - 1),
+               expression='{x} == %d' % (n - 1),
                text='Номер активного БАРЛ')
 
-    print(Text.subtitle('ПРОВЕРКА УРОВНЯ ПРИНИМАЕМОГО СИГНАЛА (норма 90-210)'))
+    yprint('ПРОВЕРКА УРОВНЯ ПРИНИМАЕМОГО СИГНАЛА (норма 90-210)')
     control_SS(val=Ex.get('ТМИ', '15.00.UPRM' + nbarl, 'НЕКАЛИБР ТЕКУЩ'),
-               ref='90 < x < 210',
+               expression='90 < {x} < 210',
                text='УРОВЕНЬ ПРИНИМАЕМОГО СИГНАЛА')
 
-    print(Text.subtitle('ВКЛ КИС В СР С БАРЛ %s ЗАВЕРШЕН' % n))
-    ClassInput.input_break()
+    yprint('ВКЛ КИС В СР С БАРЛ %s ЗАВЕРШЕН' % n)
+    breakM()
     return started_KIS_session
 
 
@@ -77,22 +77,22 @@ def KIS_mode_standby(n):
     nbarl = barls[n]
 
     print()
-    print(Text.title('ПЕРЕВОДА КИС В ДР: БАРЛ %s' % n, tab=1))
+    yprint('ПЕРЕВОДА КИС В ДР: БАРЛ %s' % n, tab=1)
 
-    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
-    print(Text.processing('Отправка: КПА-Мощность-Вверх'))
+    yprint('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)')
+    proc_print('Отправка: КПА-Мощность-Вверх')
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
 
     # sleep 15
-    print(Text.subtitle('ПЕРЕВОД КИС В ДР'))
+    yprint('ПЕРЕВОД КИС В ДР')
     send_SOTC(5, wait=5, describe='Выключить БАРЛ')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
     control_SS(val=Ex.get('КПА', 'ДИ_КПА', 'прием_КА'),
-               ref='x != 1',
+               expression='{x} != 1',
                text=['НЕТ ПРИЁМА С МКА', 'ЕСТЬ ПРИЕМ С МКА'])
 
-    print(Text.subtitle('ПЕРЕВОД КИС В ДР ВЫПОЛНЕН'))
-    ClassInput.input_break()
+    yprint('ПЕРЕВОД КИС В ДР ВЫПОЛНЕН')
+    breakM()
     sleep(1)
 
 
@@ -119,10 +119,10 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
     # continue_session = started + timedelta(minutes=14)
     continue_session = started + timedelta(seconds=14)
     print()
-    print(Text.title('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s' % n, tab=1))
+    yprint('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s' % n, tab=1)
 
-    print(Text.subtitle('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)'))
-    print(Text.processing('Отправка: КПА-Мощность-Вверх'))
+    yprint('УСТАНОВКА MAX МОЩНОСТИ ПРД КПА (-60 ДБМ)')
+    proc_print('Отправка: КПА-Мощность-Вверх')
     Ex.send('КПА', KPA('Мощность-верх'))
     sleep(1)
 
@@ -133,25 +133,22 @@ def KIS_measure_sensitivity(n, n_SOTC, started, add_sensitive=0):
         # TODO: выдать повторно если не прошла комманда
         #  рассчитывать от количества выдаваемых комманд и пауз
         if continue_session < datetime.now():
-            Text.comment('Выдача комманды на продление CC')
+            comm_print('Выдача комманды на продление CC')
             send_SOTC(36, 1, 'продлить СС')
             control_SS(val=Ex.get('ТМИ', '15.00.NRK' + nbarl, 'НЕКАЛИБР ТЕКУЩ'),
-                       ref='x == 36',
+                       expression='{x} == 36',
                        text='')
         exchange_errors = []
         for i in range(0, n_SOTC):
             send_SOTC(14, 1, 'проверка обмена с КПА')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
             rk14 = control_SS(val=Ex.get('ТМИ', '15.00.NRK' + nbarl, 'НЕКАЛИБР ТЕКУЩ'),
-                              ref='x == 14')
+                              expression='{x} == 14')
             send_SOTC(38, 1, 'проверка обмена с КПА')  # РКN  уточнить номер РК pyОСТВНИИЭМ 15 sleep
             rk38 = control_SS(val=Ex.get('ТМИ', '15.00.NRK' + nbarl, 'НЕКАЛИБР ТЕКУЩ'),
-                              ref='x == 38')
+                              expression='{x} == 38')
             exchange_errors.extend([rk14, rk38])
 
-    print(Text.comment('Ошибки в обмене %s / %s ' % (exchange_errors.count(False), 2 * n_SOTC)))
-    print(Text.comment('Чувствительность применика БАРЛ %s -  %s db' % (n, power)))
-    print(Text.subtitle('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s ЗАВЕРШЕН' % n))
-    ClassInput.input_break()
-
-
-print('Импорт functions из modules')
+    comm_print('Ошибки в обмене %s / %s ' % (exchange_errors.count(False), 2 * n_SOTC))
+    comm_print('Чувствительность применика БАРЛ %s -  %s db' % (n, power))
+    yprint('ОПРЕДЕЛЕНИЯ ЧУВСТВИТЕЛЬНОСТИ ПРМ КИС: БАРЛ %s ЗАВЕРШЕН' % n)
+    breakM()
