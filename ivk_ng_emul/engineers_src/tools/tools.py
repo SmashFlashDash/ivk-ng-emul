@@ -26,7 +26,7 @@ class Text:
         }
     else:
         colors = {
-            'default_color': '{#dfffff}',
+            'default_color': '{#ffffff}',
             'red': '{#dc143c}',
             'green': '{#32cd32}',
             'yellow': '{#ffcd57}',
@@ -78,11 +78,11 @@ class Text:
     @classmethod
     def comment(cls, text, color='yellow'):
         tab, color = cls._get_format(tab=None, color=color)
-        return 'Комметарий: ' + color + text + cls.default_color
+        return cls.default_color + 'Комметарий: ' + color + text + cls.default_color
 
     @classmethod
     def processing(cls, text):
-        return 'Исполение: %s%s%s' % (cls.colors['blue'], text, cls.default_color)
+        return cls.default_color + 'Исполение: %s%s%s' % (cls.colors['blue'], text, cls.default_color)
 
     @classmethod
     def red(cls, text):

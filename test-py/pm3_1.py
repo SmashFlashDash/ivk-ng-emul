@@ -7,29 +7,17 @@ import sys
 # Импорт зависимостей
 if 'windows' in platform.system().lower():
     from pathlib import Path
-    sys.path.insert(0, str(Path.cwd().parent.joinpath('ivk-ng-emul')))
+    sys.path.insert(0, str(Path.cwd().parent.joinpath('ivk_ng_emul')))
     from simulation_TMI import *      # симуляция ИВКы
     from engineers_src.tools.tools import *         # импорт тулс
     from engineers_src.for_EMS.functions import *   # импорт функций
+    from engineers_src.for_EMS.KIS import *   # импорт функций
 else:
     from engineers_src.tools.tools import *  # импорт тулс
     from engineers_src.for_EMS.functions import *  # импорт из папки modeles прописа в cpi_framework_connections
 def inp(quest):
     return input(quest)
 ClassInput.set(inp)
-
-
-cprint('text', color='green')
-gprint('text')
-bprint('text')
-rprint('text')
-yprint('text')
-tprint('text', tab=1, color='yellow')
-proc_print('text')
-comm_print('text')
-send_SOTC(2, wait=0, describe="")
-s = control_SS(2, '{x}==2 and {x}==2 ', text=None)
-print('Проверка contorl_ss: %s' % s)  # - для проверки параметра (val=Ex.get(), expression=str '2 <= x ==2'', text [])
 
 
 #############     MAIN      ###########################
